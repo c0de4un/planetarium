@@ -15,9 +15,18 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // HEADER
+#include <orbit/windows/main.hpp>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // MAIN
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+int main()
+{
+    std::cout << "Hello World !\n\n Press any key to exit . . .\n\n";
+    std::cin.get();
+
+    return ORBIT_OK;
+}
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

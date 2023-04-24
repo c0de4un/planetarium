@@ -7,7 +7,7 @@
 set( APP_WIN_DIR "${APP_SRC_DIR}/windows" )
 set( APP_WIN_PUBLIC_DIR "${APP_WIN_DIR}/public/orbit/windows/" )
 set( APP_WIN_PRIVATE_DIR "${APP_WIN_DIR}/private/orbit/windows/" )
-set( APP_WIN_PUBLIC_INCLUDE_DIR "${APP_WIN_DIR}/public/orbit/windows" )
+set( APP_WIN_PUBLIC_INCLUDE_DIR "${APP_WIN_DIR}/public" )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # HEADERS
