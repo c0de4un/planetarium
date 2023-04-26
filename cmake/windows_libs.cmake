@@ -18,7 +18,7 @@ else ( opengl )
 endif ( opengl )
 
 # Link OpenGL
-target_link_libraries ( ${BUILD_TARGET} opengl )
+target_link_libraries ( ${BUILD_TARGET} ${opengl} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # GLAD

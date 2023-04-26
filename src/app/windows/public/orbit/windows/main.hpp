@@ -25,4 +25,7 @@ static constexpr const int ORBIT_OK = 0;
 // Include STL iostream
 #include <iostream>
 
+// Include STL string
+#include <string>
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
