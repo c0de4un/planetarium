@@ -9,6 +9,9 @@ set_target_properties ( orbit PROPERTIES
     VERSION ${PROJECT_VERSION}
     RUNTIME_OUTPUT_DIRECTORY "${APP_BIN_OUTPUT_DIR}" )
 
+# Link with App.Core Headers
+target_include_directories( orbit PUBLIC "${APP_CORE_PUBLIC_INCLUDE_DIR}" )
+
 # Link with App.Windows Headers
 target_include_directories( orbit PUBLIC "${APP_WIN_PUBLIC_INCLUDE_DIR}" )
 
