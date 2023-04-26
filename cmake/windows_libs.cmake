@@ -1,6 +1,33 @@
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# OpenGL
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+if ( APP_WINDOWS ) # Windows SDK OpenGL32
+    find_library( opengl "OpenGL32.lib" )
+else ( APP_WINDOWS )
+    message ( FATAL_ERROR "${PROJECT_NAME} - OpenGL STATIC-Library location for current platform is not set, configuration required" )
+endif ( APP_WINDOWS )
+
+# Check
+if ( opengl )
+    message( STATUS "${PROJECT_NAME} - opengl - found at: ${opengl}" )
+else ( opengl )
+    message( FATAL_ERROR "${PROJECT_NAME} - opengl - not found" )
+endif ( opengl )
+
+# Link OpenGL
+target_link_libraries ( ${BUILD_TARGET} opengl )
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# GLAD
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+target_include_directories ( ${BUILD_TARGET} PRIVATE "${LIBS_DIR}glad/include" )
+target_sources ( ${BUILD_TARGET} PUBLIC "${LIBS_DIR}/glad/src/glad.c" )
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # GLFW
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
