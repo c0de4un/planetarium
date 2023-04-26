@@ -25,7 +25,7 @@ target_link_libraries ( ${BUILD_TARGET} opengl )
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 target_include_directories ( ${BUILD_TARGET} PRIVATE "${LIBS_DIR}glad/include" )
-target_sources ( ${BUILD_TARGET} PUBLIC "${LIBS_DIR}/glad/src/glad.c" )
+target_sources ( ${BUILD_TARGET} PUBLIC "${LIBS_DIR}glad/src/gl.c" )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # GLFW
