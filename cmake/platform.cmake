@@ -37,16 +37,16 @@ if ( NOT DEFINED APP_PLATFORM_DETECTED )
 
 endif ( NOT DEFINED APP_PLATFORM_DETECTED )
 
-if ( NOT DEFINED ABI_ARCH )
-    set( ABI_ARCH "x64" )
-    add_definitions( -DABI_ARCH=x64 )
-    message( STATUS "${PROJECT_NAME} - ABI-Architecture set to ${ABI_ARCH} as default" )
-endif ( NOT DEFINED ABI_ARCH )
+if ( NOT DEFINED CPU_ARCHITECTURE_BIT )
+    set( CPU_ARCHITECTURE_BIT "x64" )
+    add_definitions( -DCPU_ARCHITECTURE_BIT=x64 )
+    message( STATUS "${PROJECT_NAME} - CPU_ARCHITECTURE_BIT set to ${CPU_ARCHITECTURE_BIT} as default" )
+endif ( NOT DEFINED CPU_ARCHITECTURE_BIT )
 
-if ( NOT DEFINED ABI_FAMILY )
-    set( ABI_FAMILY "amd" )
-    add_definitions( -DABI_FAMILY=amd )
-    message( STATUS "${PROJECT_NAME} - ABI-Family set to ${ABI_FAMILY} as default" )
-endif ( NOT DEFINED ABI_FAMILY )
+if ( NOT DEFINED CPU_ARCHITECTURE )
+    set( CPU_ARCHITECTURE "amd" )
+    add_definitions( -DCPU_ARCHITECTURE=amd )
+    message( STATUS "${PROJECT_NAME} - CPU_ARCHITECTURE set to ${CPU_ARCHITECTURE} as default" )
+endif ( NOT DEFINED CPU_ARCHITECTURE )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

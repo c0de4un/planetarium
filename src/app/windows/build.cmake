@@ -2,6 +2,7 @@
 
 # Add Executable Object
 add_executable(orbit ${APP_HEADERS} ${APP_SOURCES} ${APP_RESOURCES})
+set( BUILD_TARGET orbit )
 
 # Configure Executable-Object
 set_target_properties ( orbit PROPERTIES
