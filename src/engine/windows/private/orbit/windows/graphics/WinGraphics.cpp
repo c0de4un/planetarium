@@ -15,11 +15,41 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // HEADER
-#ifndef ORBIT_WIN_GRAPHICS_HPP>
+#ifndef ORBIT_WIN_GRAPHICS_HPP
+#include <orbit/windows/graphics/WinGraphics.hpp>
 #endif /// !ORBIT_WIN_GRAPHICS_HPP
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
+// WinGraphics
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+namespace orbit
+{
+
+    namespace win
+    {
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // CONSTRUCTOR & DESTRUCTOR
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        WinGraphics::WinGraphics()
+            : Graphics()
+        {
+        }
+
+        WinGraphics::~WinGraphics() noexcept = default;
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    }
+
+}
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

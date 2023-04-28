@@ -1,6 +1,6 @@
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-# Append Engine.Core
+# Append Engine Headers & Sources
 set( APP_HEADERS ${ENGINE_HEADERS} ${APP_HEADERS} )
 set( APP_SOURCES ${ENGINE_SOURCES} ${APP_SOURCES} )
 
@@ -15,6 +15,9 @@ set_target_properties ( orbit PROPERTIES
 
 # Link with Engine.Core
 target_include_directories( orbit PUBLIC "${ENGINE_CORE_PUBLIC_INCLUDE_DIR}" )
+
+# Link with Engine.GL
+target_include_directories( orbit PUBLIC "${ENGINE_GL_PUBLIC_INCLUDE_DIR}" )
 
 # Link with Engine.Windows
 target_include_directories( orbit PUBLIC "${ENGINE_WIN_PUBLIC_INCLUDE_DIR}" )

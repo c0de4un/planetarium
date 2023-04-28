@@ -30,7 +30,7 @@ static constexpr const int ORBIT_OK = 0;
 
 // Include orbit::windows::WinGraphics
 #ifndef ORBIT_WIN_GRAPHICS_HPP
-// @TODO:
+#include <orbit/windows/graphics/WinGraphics.hpp>
 #endif /// !ORBIT_WIN_GRAPHICS_HPP
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

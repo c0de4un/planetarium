@@ -43,6 +43,9 @@ include( "${ENGINE_SRC_DIR}/core/module.cmake" )
 # Engine.Platform
 include( "${ENGINE_SRC_DIR}/${PLATFORM}/module.cmake" )
 
+# Engine.GL
+include( "${ENGINE_SRC_DIR}/gl/module.cmake" )
+
 # App.Core
 include( "${APP_SRC_DIR}/core/module.cmake" )
 

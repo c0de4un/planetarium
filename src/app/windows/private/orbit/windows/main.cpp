@@ -21,10 +21,24 @@
 // MAIN
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+void Start()
+{
+    // Initialize WinGraphics
+    orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() ));
+}
+
+void Stop()
+{
+    orbit_Graphics::Terminate();
+}
+
 int main()
 {
     std::cout << "Hello World !\n\n Press any key to exit . . .\n\n";
     std::cin.get();
+
+    Start();
+    Stop();
 
     return ORBIT_OK;
 }

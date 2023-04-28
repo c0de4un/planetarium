@@ -8,18 +8,23 @@
  * SOFTWARE.
 **/
 
+#ifndef ORBIT_GL_ENABLED
+#error "OpenGL is disabled"
+#endif
+
+#ifndef ORBIT_GL_HPP
+#define ORBIT_GL_HPP
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// HEADER
-#ifndef ORBIT_WIN_GRAPHICS_HPP>
-#endif /// !ORBIT_WIN_GRAPHICS_HPP
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-//
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// GLFW
+#include <glad/gl.h>
+#include <GLFW/glfw3.h>
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+#endif /// !ORBIT_GL_HPP

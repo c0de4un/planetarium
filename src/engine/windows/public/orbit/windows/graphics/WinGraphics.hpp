@@ -17,8 +17,15 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::core::gl
+// Include orbit::core::Graphics
+#ifndef ORBIT_CORE_GRAPHICS_HPP
+#include <orbit/core/graphics/Graphics.hpp>
+#endif /// !ORBIT_CORE_GRAPHICS_HPP
 
+// Include orbit::gl
+#ifndef ORBIT_GL_HPP
+#include <orbit/gl/config/orbit_gl.hpp>
+#endif /// !ORBIT_GL_HPP
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -36,29 +43,18 @@ namespace orbit
         // WinGraphics
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class WinGraphics final
+        class WinGraphics final : public orbit_Graphics
         {
-
-        private:
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // CONSTRUCTOR
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            explicit WinGraphics();
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         public:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // DESTRUCTOR
+            // CONSTRUCTOR & DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+            explicit WinGraphics();
             virtual ~WinGraphics() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -70,6 +66,8 @@ namespace orbit
     } /// orbit::win
 
 } /// orbit
+
+using orbit_WinGraphics = orbit::win::WinGraphics;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 

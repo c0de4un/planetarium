@@ -4,35 +4,35 @@
 # CONSTANTS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-set( APP_WIN_DIR "${APP_SRC_DIR}/windows" )
-set( APP_WIN_PUBLIC_DIR "${APP_WIN_DIR}/public/orbit/windows/" )
-set( APP_WIN_PRIVATE_DIR "${APP_WIN_DIR}/private/orbit/windows/" )
-set( APP_WIN_PUBLIC_INCLUDE_DIR "${APP_WIN_DIR}/public" )
+set( ENGINE_GL_DIR "${ENGINE_SRC_DIR}/gl" )
+set( ENGINE_GL_PUBLIC_DIR "${ENGINE_GL_DIR}/public/orbit/gl/" )
+set( ENGINE_GL_PRIVATE_DIR "${ENGINE_GL_DIR}/private/orbit/gl/" )
+set( ENGINE_GL_PUBLIC_INCLUDE_DIR "${ENGINE_GL_DIR}/public" )
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# CONFIGS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+add_definitions( -DORBIT_GL_ENABLED=1 )
+add_definitions( -DORBIT_GL_MAJOR=3 )
+add_definitions( -DORBIT_GL_MINOR=0 )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # HEADERS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-set( APP_HEADERS
-    # MAIN
-    "${APP_WIN_PUBLIC_DIR}main.hpp"
-    ${APP_HEADERS}
+set( ENGINE_HEADERS
+    # CONFIG
+    "${ENGINE_GL_PUBLIC_DIR}/config/orbit_gl.hpp"
+    ${ENGINE_HEADERS}
 )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # SOURCES
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-set( APP_SOURCES
-    # MAIN
-    "${APP_WIN_PRIVATE_DIR}main.cpp"
-    ${APP_SOURCES}
-)
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# RESOURCES
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-set( APP_RESOURCES "${APP_RES_DIR}/win/win_res.rc" )
+#set( ENGINE_SOURCES
+#    ${ENGINE_SOURCES}
+#)
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
