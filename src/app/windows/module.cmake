@@ -14,6 +14,9 @@ set( APP_WIN_PUBLIC_INCLUDE_DIR "${APP_WIN_DIR}/public" )
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 set( APP_HEADERS
+    # GRAPHICS
+    "${APP_WIN_PUBLIC_DIR}graphics/WinGraphics.hpp"
+    # MAIN
     "${APP_WIN_PUBLIC_DIR}main.hpp"
     ${APP_HEADERS}
 )
@@ -23,6 +26,9 @@ set( APP_HEADERS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 set( APP_SOURCES
+    # GRAPHICS
+    "${APP_WIN_PRIVATE_DIR}graphics/WinGraphics.cpp"
+    # MAIN
     "${APP_WIN_PRIVATE_DIR}main.cpp"
     ${APP_SOURCES}
 )

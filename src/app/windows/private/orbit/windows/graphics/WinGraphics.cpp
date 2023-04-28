@@ -8,29 +8,18 @@
  * SOFTWARE.
 **/
 
-#pragma once
-
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// ALIASES
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-static constexpr const int ORBIT_OK = 0;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include STL iostream
-#include <iostream>
-
-// Include STL string
-#include <string>
-
-// Include orbit::windows::WinGraphics
-#ifndef ORBIT_WIN_GRAPHICS_HPP
-// @TODO:
+// HEADER
+#ifndef ORBIT_WIN_GRAPHICS_HPP>
 #endif /// !ORBIT_WIN_GRAPHICS_HPP
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+//
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

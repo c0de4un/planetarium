@@ -18,6 +18,7 @@ if (NOT DEFINED ROOT_DIR)
 endif (NOT DEFINED ROOT_DIR)
 
 set( APP_SRC_DIR "${ROOT_DIR}/src/app" )
+set( ENGINE_SRC_DIR "${ROOT_DIR}/src/engine" )
 set( APP_CMAKE_DIR "${ROOT_DIR}/cmake" )
 set( APP_RES_DIR "${ROOT_DIR}/res" )
 set( APP_BIN_OUTPUT_DIR "${ROOT_DIR}/bin" )

@@ -37,6 +37,12 @@ set(CMAKE_AUTORCC ON)
 # MODULES
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Engine.Core
+include( "${ENGINE_SRC_DIR}/core/module.cmake" )
+
+# Engine.Platform
+include( "${ENGINE_SRC_DIR}/${PLATFORM}/module.cmake" )
+
 # App.Core
 include( "${APP_SRC_DIR}/core/module.cmake" )
 
