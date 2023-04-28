@@ -15,6 +15,8 @@ set( ENGINE_CORE_PUBLIC_INCLUDE_DIR "${ENGINE_CORE_DIR}/public" )
 
 set( ENGINE_HEADERS
     # CONFIGS
+    # ECS
+    "${ENGINE_CORE_PUBLIC_DIR}ecs/ISystem.hxx"
     # GRAPHICS
     "${ENGINE_CORE_PUBLIC_DIR}graphics/Graphics.hpp"
     ${ENGINE_HEADERS} )
