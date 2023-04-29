@@ -34,10 +34,10 @@ void Start()
     try
     {
         // Initialize WinGraphics
-        std::shared_ptr<orbit_Graphics> graphics(orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() )));
+        std::shared_ptr<orbit_WinGraphics> winGraphics(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>(orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() ))));
 
         // Start
-        if (!graphics->Start())
+        if (!winGraphics->Start())
         {
 #ifdef ORBIT_DEBUG // DEBUG
             orbit_Log::error("main::Start: failed to Start WinGraphics");
@@ -45,6 +45,9 @@ void Start()
 
             return;
         }
+
+        // Enter render loop
+        winGraphics->Loop();
     }
 #ifdef ORBIT_DEBUG // DEBUG
     catch(const std::exception& exception_ref)

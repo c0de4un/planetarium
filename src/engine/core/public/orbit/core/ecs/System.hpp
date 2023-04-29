@@ -59,11 +59,11 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             static constexpr const state_t STATE_NONE     = 0;
-            static constexpr const state_t STATE_STARTING = 0;
-            static constexpr const state_t STATE_RUNNING  = 0;
-            static constexpr const state_t STATE_PAUSING  = 0;
-            static constexpr const state_t STATE_PAUSED   = 0;
-            static constexpr const state_t STATE_STOPPING = 0;
+            static constexpr const state_t STATE_STARTING = 1;
+            static constexpr const state_t STATE_RUNNING  = 2;
+            static constexpr const state_t STATE_PAUSING  = 3;
+            static constexpr const state_t STATE_PAUSED   = 4;
+            static constexpr const state_t STATE_STOPPING = 5;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // FIELDS
