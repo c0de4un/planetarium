@@ -20,6 +20,11 @@
 // Include STL memory
 #include <memory>
 
+// Include orbit::core::System
+#ifndef ORBIT_CORE_SYSTEM_HPP
+#include <orbit/core/ecs/System.hpp>
+#endif /// !ORBIT_CORE_SYSTEM_HPP
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -36,7 +41,7 @@ namespace orbit
         // Graphics
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class Graphics
+        class Graphics : public orbit_System
         {
 
         protected:
