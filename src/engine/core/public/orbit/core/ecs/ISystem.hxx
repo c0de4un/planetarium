@@ -71,6 +71,7 @@ namespace orbit
 
 } /// orbit
 
+using orbit_ISystem = orbit::core::ISystem;
 #define ORBIT_CORE_I_SYSTEM_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

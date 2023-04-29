@@ -17,6 +17,7 @@ set( ENGINE_HEADERS
     # CONFIGS
     # ECS
     "${ENGINE_CORE_PUBLIC_DIR}ecs/ISystem.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}ecs/System.hpp"
     # GRAPHICS
     "${ENGINE_CORE_PUBLIC_DIR}graphics/Graphics.hpp"
     ${ENGINE_HEADERS} )
@@ -26,6 +27,8 @@ set( ENGINE_HEADERS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 set( ENGINE_SOURCES
+    # ECS
+    "${ENGINE_CORE_PRIVATE_DIR}ecs/System.cpp"
     # GRAPHICS
     "${ENGINE_CORE_PRIVATE_DIR}graphics/Graphics.cpp"
     ${ENGINE_SOURCES} )
