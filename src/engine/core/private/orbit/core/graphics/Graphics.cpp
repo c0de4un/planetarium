@@ -19,6 +19,16 @@
 #include <orbit/core/graphics/Graphics.hpp>
 #endif /// !ORBIT_CORE_GRAPHICS_HPP
 
+// DEBUG
+#ifdef ORBIT_DEBUG
+
+#ifndef ORBIT_CORE_DEBUG_HPP
+#include <orbit/core/cfg/orbit_debug.hpp>
+#endif /// !ORBIT_CORE_DEBUG_HPP
+
+#endif
+// DEBUG
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Graphics
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -59,6 +69,11 @@ namespace orbit
 
         std::shared_ptr<Graphics> Graphics::Initialize(std::shared_ptr<Graphics> pInstance)
         {
+#ifdef ORBIT_DEBUG // DEBUG
+            assert(!mInstance && "Graphics::Initialize: already initialized");
+            orbit_Log::info("Graphics::Initialize");
+#endif // DEBUG
+
             if (!mInstance) {
                 mInstance = pInstance; // Copy and increase ref. count
             }
@@ -68,6 +83,10 @@ namespace orbit
 
         void Graphics::Terminate() noexcept
         {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("Graphics::Terminate");
+#endif // DEBUG
+
             mInstance.reset();
         }
 

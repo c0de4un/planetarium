@@ -15,6 +15,7 @@ set( ENGINE_CORE_PUBLIC_INCLUDE_DIR "${ENGINE_CORE_DIR}/public" )
 
 set( ENGINE_HEADERS
     # CONFIGS
+    "${ENGINE_CORE_PUBLIC_DIR}cfg/orbit_debug.hpp"
     # LOG
     "${ENGINE_CORE_PUBLIC_DIR}log/Log.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}log/ILogger.hxx"
