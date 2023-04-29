@@ -33,4 +33,20 @@ static constexpr const int ORBIT_OK = 0;
 #include <orbit/windows/graphics/WinGraphics.hpp>
 #endif /// !ORBIT_WIN_GRAPHICS_HPP
 
+// DEBUG
+#ifdef ORBIT_DEBUG
+
+// Include orbit::core::Log
+#ifndef ORBIT_CORE_LOG_HPP
+#include <orbit/core/log/Log.hpp>
+#endif /// !ORBIT_CORE_LOG_HPP
+
+// Include orbit::core::ConsoleLogger
+#ifndef ORBIT_CORE_CONSOLE_LOGGER_HPP
+#include <orbit/core/log/ConsoleLogger.hpp>
+#endif /// !ORBIT_CORE_CONSOLE_LOGGER_HPP
+
+#endif
+// DEBUG
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

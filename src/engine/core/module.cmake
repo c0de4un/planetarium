@@ -15,6 +15,10 @@ set( ENGINE_CORE_PUBLIC_INCLUDE_DIR "${ENGINE_CORE_DIR}/public" )
 
 set( ENGINE_HEADERS
     # CONFIGS
+    # LOG
+    "${ENGINE_CORE_PUBLIC_DIR}log/Log.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}log/ILogger.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}log/ConsoleLogger.hpp"
     # ECS
     "${ENGINE_CORE_PUBLIC_DIR}ecs/ISystem.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}ecs/System.hpp"
@@ -27,6 +31,9 @@ set( ENGINE_HEADERS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 set( ENGINE_SOURCES
+    # LOG
+    "${ENGINE_CORE_PRIVATE_DIR}log/Log.cpp"
+    "${ENGINE_CORE_PRIVATE_DIR}log/ConsoleLogger.cpp"
     # ECS
     "${ENGINE_CORE_PRIVATE_DIR}ecs/System.cpp"
     # GRAPHICS

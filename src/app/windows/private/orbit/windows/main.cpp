@@ -23,20 +23,32 @@
 
 void Start()
 {
+#ifdef ORBIT_DEBUG // DEBUG
+    // Initialize Logger
+    orbit_Log::Initialize(std::static_pointer_cast<orbit_ConsoleLogger, orbit_ILogger>( std::make_shared<orbit_ConsoleLogger>() ));
+
+    orbit_Log::info("Starting . . .");
+#endif // DEBUG
+
     // Initialize WinGraphics
     orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() ));
 }
 
 void Stop()
 {
+#ifdef ORBIT_DEBUG // dEBUG
+    orbit_Log::info("Stopping . . .");
+#endif // DEBUG
+
     orbit_Graphics::Terminate();
+
+#ifdef ORBIT_DEBUG // dEBUG
+    orbit_Log::Terminate();
+#endif // DEBUG
 }
 
 int main()
 {
-    std::cout << "Hello World !\n\n Press any key to exit . . .\n\n";
-    std::cin.get();
-
     Start();
     Stop();
 
