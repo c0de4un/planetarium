@@ -78,13 +78,19 @@ namespace orbit
             explicit System();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // GETTERS & SETTERS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            void setState(const state_t state) noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            bool onStart();
-            bool onResume();
-            bool onPause();
-            void onStop();
+            virtual bool onStart();
+            virtual bool onResume();
+            virtual bool onPause();
+            virtual void onStop();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED

@@ -50,6 +50,11 @@ namespace orbit
         // GETTERS & SETTERS
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+        void System::setState(const System::state_t state) noexcept
+        {
+            mState = state;
+        }
+
         bool System::isStarted() const noexcept
         {
             const System::state_t state(mState);
@@ -95,10 +100,16 @@ namespace orbit
         {
             if (isStarted()) {
                 if (isPaused())
+                {
+                    setState(System::STATE_STARTING);
+
                     return onResume();
+                }
 
                 return true;
             }
+
+            setState(System::STATE_STARTING);
 
             return onStart();
         }
@@ -108,6 +119,8 @@ namespace orbit
             if (!isStarted() || isPaused())
                 return true;
 
+            setState(System::STATE_PAUSING);
+
             return onPause();
         }
 
@@ -115,6 +128,8 @@ namespace orbit
         {
             if (!isStarted())
                 return;
+
+            setState(System::STATE_STOPPING);
 
             onStop();
         }

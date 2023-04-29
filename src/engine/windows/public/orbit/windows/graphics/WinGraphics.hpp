@@ -46,6 +46,21 @@ namespace orbit
         class WinGraphics final : public orbit_Graphics
         {
 
+        protected:
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.System
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool onStart()  final;
+            virtual bool onResume() final;
+            virtual bool onPause()  final;
+            virtual void onStop()   final;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
         public:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
