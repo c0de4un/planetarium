@@ -22,12 +22,6 @@ static constexpr const int ORBIT_OK = 0;
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include STL iostream
-#include <iostream>
-
-// Include STL string
-#include <string>
-
 // Include orbit::windows::WinGraphics
 #ifndef ORBIT_WIN_GRAPHICS_HPP
 #include <orbit/windows/graphics/WinGraphics.hpp>
@@ -36,10 +30,10 @@ static constexpr const int ORBIT_OK = 0;
 // DEBUG
 #ifdef ORBIT_DEBUG
 
-// Include orbit::core::Log
-#ifndef ORBIT_CORE_LOG_HPP
-#include <orbit/core/log/Log.hpp>
-#endif /// !ORBIT_CORE_LOG_HPP
+// Include orbit::debug
+#ifndef ORBIT_CORE_DEBUG_HPP
+#include <orbit/core/cfg/orbit_debug.hpp>
+#endif /// !ORBIT_CORE_DEBUG_HPP
 
 // Include orbit::core::ConsoleLogger
 #ifndef ORBIT_CORE_CONSOLE_LOGGER_HPP

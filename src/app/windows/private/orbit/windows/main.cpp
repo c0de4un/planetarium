@@ -30,8 +30,37 @@ void Start()
     orbit_Log::info("Starting . . .");
 #endif // DEBUG
 
-    // Initialize WinGraphics
-    orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() ));
+    // Guarded-Block
+    try
+    {
+        // Initialize WinGraphics
+        std::shared_ptr<orbit_Graphics> graphics(orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() )));
+
+        // Start
+        if (!graphics->Start())
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::error("main::Start: failed to Start WinGraphics");
+#endif // DEBUG
+
+            return;
+        }
+    }
+#ifdef ORBIT_DEBUG // DEBUG
+    catch(const std::exception& exception_ref)
+    {
+        std::string logMsg("main::Start: ");
+        logMsg += exception_ref.what();
+        orbit_Log::error(logMsg.c_str());
+    }
+#endif // DEBUG
+    catch (...)
+    {
+#ifdef ORBIT_DEBUG // DEBUG
+        std::string logMsg("main::Start: unknown error");
+        orbit_Log::error(logMsg.c_str());
+#endif // DEBUG
+    }
 }
 
 void Stop()
@@ -40,11 +69,30 @@ void Stop()
     orbit_Log::info("Stopping . . .");
 #endif // DEBUG
 
-    orbit_Graphics::Terminate();
+    // Guarded-Block
+    try
+    {
+        orbit_Graphics::Terminate();
 
 #ifdef ORBIT_DEBUG // dEBUG
     orbit_Log::Terminate();
 #endif // DEBUG
+    }
+#ifdef ORBIT_DEBUG // DEBUG
+    catch(const std::exception& exception_ref)
+    {
+        std::string logMsg("main::Stop: ");
+        logMsg += exception_ref.what();
+        orbit_Log::error(logMsg.c_str());
+    }
+#endif // DEBUG
+    catch (...)
+    {
+#ifdef ORBIT_DEBUG // DEBUG
+        std::string logMsg("main::Stop: unknown error");
+        orbit_Log::error(logMsg.c_str());
+#endif // DEBUG
+    }
 }
 
 int main()
