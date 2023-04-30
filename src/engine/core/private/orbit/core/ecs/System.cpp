@@ -75,21 +75,28 @@ namespace orbit
 
         bool System::onStart()
         {
+            setState(System::STATE_RUNNING);
+
             return true;
         }
 
         bool System::onResume()
         {
+            setState(System::STATE_RUNNING);
+
             return true;
         }
 
         bool System::onPause()
         {
+            setState(System::STATE_PAUSED);
+
             return true;
         }
 
         void System::onStop()
         {
+            setState(System::STATE_NONE);
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

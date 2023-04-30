@@ -89,6 +89,32 @@ namespace orbit
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.System
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        void RenderSystem::onStop()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("RenderSystem::onStop");
+#endif // DEBUG
+
+            try
+            {
+                std::unique_lock<std::mutex> lock(mListenersMutex);
+
+                mLsiteners.clear();
+
+                lock.unlock();
+            }
+            catch (...) // mutex may throw exception
+            {
+                // void
+            }
+
+            System::onStop();
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.RenderSystem
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

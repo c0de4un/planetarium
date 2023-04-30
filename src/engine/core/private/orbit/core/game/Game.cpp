@@ -100,6 +100,14 @@ namespace orbit
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.IRenderLsitener
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        void Game::onRender()
+        {
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.System
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -110,13 +118,17 @@ namespace orbit
 #endif // DEBUG
 
             // Check RenderSystem
+            std::shared_ptr<orbit_Renderer> renderystem(orbit_Renderer::getInstance());
 #ifdef ORBIT_DEBUG // DEBUG
-            assert(orbit_Renderer::isInitialized() && "Game::onStart: RenderSystem is not initialized");
+            assert(renderystem.get() && "Game::onStart: RenderSystem is not initialized");
 #else // !DEBUG
             if (!orbit_Renderer::isInitialized())
                 return false;
 #endif // DEBUG
-            
+
+            // Register Game as Render System events listener
+            renderystem->addListener(std::static_pointer_cast<orbit_IRenderListener, orbit_Game>( getInstance() ));
+
             // Check Graphics System
 #ifdef ORBIT_DEBUG // DEBUG
             assert(orbit_Graphics::isInitialized() && "Game::onStart: Graphics system is not initialized");

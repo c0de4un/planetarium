@@ -30,6 +30,11 @@
 #include <orbit/core/game/IGame.hxx>
 #endif /// !ORBIT_CORE_I_GAME_HXX
 
+// Include orbit::core::IRenderLsitener
+#ifndef ORBIT_CORE_I_RENDER_LSITENER_HXX
+#include <orbit/core/render/IRenderListener.hxx>
+#endif /// !ORBIT_CORE_I_RENDER_LSITENER_HXX
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Game
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -46,7 +51,7 @@ namespace orbit
         // Game
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class Game : public orbit_System, public orbit_IGame
+        class Game : public orbit_System, public orbit_IGame, public orbit_IRenderListener
         {
 
         protected:
@@ -107,6 +112,12 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             virtual bool onError(const char* const msg) noexcept override;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.IRenderListener
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            void onRender() override;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.Game
