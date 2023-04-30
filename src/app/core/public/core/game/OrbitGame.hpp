@@ -76,6 +76,8 @@ namespace orbit
 
             virtual bool onStart() final;
 
+            void onRender() final;
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
