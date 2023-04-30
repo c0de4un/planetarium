@@ -8,19 +8,17 @@
  * SOFTWARE.
 **/
 
+#ifndef ORBIT_CORE_I_MATERIAL_HXX
+#define ORBIT_CORE_I_MATERIAL_HXX
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// HEADER
-#ifndef ORBIT_CORE_MATERIAL_HPP
-#include <orbit/core/assets/materials/Material.hpp>
-#endif /// !ORBIT_CORE_MATERIAL_HPP
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Material
+// TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 namespace orbit
@@ -32,16 +30,25 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // CONSTRUCTOR & DESTRUCTOR
+        // IMaterial
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        Material::Material()
-            :
-            Asset()
+        class IMaterial
         {
-        }
 
-        Material::~Material() noexcept = default;
+        public:
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // DESTRUCTOR
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual ~IMaterial() noexcept = default;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        };
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -49,4 +56,9 @@ namespace orbit
 
 }
 
+using orbit_IMaterial = orbit::core::IMaterial;
+#define ORBIT_CORE_I_MATERIAL_DECL
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+#endif /// !ORBIT_CORE_I_MATERIAL_HXX

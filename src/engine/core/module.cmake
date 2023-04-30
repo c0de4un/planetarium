@@ -52,7 +52,10 @@ set( ENGINE_HEADERS
     # ASSETS
     "${ENGINE_CORE_PUBLIC_DIR}assets/EAssetStates.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}assets/IAsset.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}assets/Asset.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}assets/shaders/Shader.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}assets/materials/IMaterial.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}assets/materials/Material.hpp"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -82,7 +85,9 @@ set( ENGINE_SOURCES
     # SCENE
     "${ENGINE_CORE_PRIVATE_DIR}scene/Scene3D.cpp"
     # ASSETS
+    "${ENGINE_CORE_PRIVATE_DIR}assets/Asset.cpp"
     "${ENGINE_CORE_PRIVATE_DIR}assets/shaders/Shader.cpp"
+    "${ENGINE_CORE_PRIVATE_DIR}assets/materials/Material.cpp"
     ${ENGINE_SOURCES} )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
