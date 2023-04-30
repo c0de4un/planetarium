@@ -8,8 +8,8 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_I_MATERIAL_HXX
-#define ORBIT_CORE_I_MATERIAL_HXX
+#ifndef ORBIT_CORE_I_SHADER_HXX
+#define ORBIT_CORE_I_SHADER_HXX
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -17,13 +17,8 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::core::EMaterialSlots
-#include <orbit/core/assets/materials/EMaterialSlots.hpp>
-
-// Include orbit::core::Material
-
-// Include STL memory
-#include <memory>
+// Include orbit::core::EShaderTypes
+#include <orbit/core/assets/shaders/EShaderTypes.hpp>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -38,10 +33,10 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // IMaterial
+        // IShader
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class IMaterial
+        class IShader
         {
 
         public:
@@ -52,14 +47,13 @@ namespace orbit
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~IMaterial() noexcept = default;
+            virtual ~IShader() noexcept = default;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS
+            // GETTERS & SETTERS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual bool attachShader(const unsigned char slot, std::shared_ptr<orbit_IAsset> pShader) = 0;
-            virtual void detachSlot(const unsigned char slot)   = 0;
+            virtual unsigned char getShaderType() const noexcept = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -71,9 +65,9 @@ namespace orbit
 
 }
 
-using orbit_IMaterial = orbit::core::IMaterial;
-#define ORBIT_CORE_I_MATERIAL_DECL
+using orbit_IShader = orbit::core::IShader;
+#define ORBIT_CORE_I_SHADER_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_I_MATERIAL_HXX
+#endif /// !ORBIT_CORE_I_SHADER_HXX

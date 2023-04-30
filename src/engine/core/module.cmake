@@ -53,7 +53,10 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}assets/EAssetStates.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}assets/IAsset.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}assets/Asset.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}assets/shaders/EShaderTypes.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}assets/shaders/IShader.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}assets/shaders/Shader.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}assets/materials/EMaterialSlots.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}assets/materials/IMaterial.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}assets/materials/Material.hpp"
     ${ENGINE_HEADERS} )

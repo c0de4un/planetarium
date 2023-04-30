@@ -8,22 +8,9 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_I_MATERIAL_HXX
-#define ORBIT_CORE_I_MATERIAL_HXX
+#pragma once
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// INCLUDES
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// Include orbit::core::EMaterialSlots
-#include <orbit/core/assets/materials/EMaterialSlots.hpp>
-
-// Include orbit::core::Material
-
-// Include STL memory
-#include <memory>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -38,28 +25,21 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // IMaterial
+        // EMaterialSlots
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class IMaterial
+        enum EMaterialSlots : unsigned char
         {
 
-        public:
-
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // DESTRUCTOR
+            // CONSTANTS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~IMaterial() noexcept = default;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            virtual bool attachShader(const unsigned char slot, std::shared_ptr<orbit_IAsset> pShader) = 0;
-            virtual void detachSlot(const unsigned char slot)   = 0;
+            MATERIAL_SLOT_FRAGMENT_SHADER = 1,
+            MATERIAL_SLOT_VERTEX_SHADER   = 2,
+            MATERIAL_SLOT_MAX             = 99
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -71,9 +51,4 @@ namespace orbit
 
 }
 
-using orbit_IMaterial = orbit::core::IMaterial;
-#define ORBIT_CORE_I_MATERIAL_DECL
-
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-#endif /// !ORBIT_CORE_I_MATERIAL_HXX
