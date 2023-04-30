@@ -39,11 +39,19 @@ void Start()
         // Initialize GLRenderer
         orbit_Renderer::Initialize(std::static_pointer_cast<orbit_Renderer, orbit_GLRenderer>(std::make_shared<orbit_GLRenderer>()));
 
+        // Initialize OrbitGame
+        std::shared_ptr<orbit::core::OrbitGame> game(std::make_shared<orbit::core::OrbitGame>());
+        orbit_Game::Initialize(std::static_pointer_cast<orbit_Game, orbit::core::OrbitGame>(game));
+
+#ifdef ORBIT_DEBUG
+        assert(orbit_Game::getInstance() == game && "main::Start: Unexpected Game initialization result");
+#endif
+
         // Start
-        if (!winGraphics->Start())
+        if (!game->Start())
         {
 #ifdef ORBIT_DEBUG // DEBUG
-            orbit_Log::error("main::Start: failed to Start WinGraphics");
+            orbit_Log::error("main::Start: failed to Start Game");
 #endif // DEBUG
 
             return;
@@ -78,7 +86,13 @@ void Stop()
     // Guarded-Block
     try
     {
-        orbit_Graphics::Terminate();
+        // Stop Game, Engine, Graphics, etc
+        std::shared_ptr<orbit_Game> game(orbit_Game::getInstance());
+        if (game.get())
+            game->Stop();
+
+        // Terminate Instances
+        orbit_Game::Terminate();
 
 #ifdef ORBIT_DEBUG // dEBUG
     orbit_Log::Terminate();

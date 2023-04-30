@@ -183,6 +183,28 @@ namespace orbit
         // METHODS.Game
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+        std::shared_ptr<Game> Game::Initialize(std::shared_ptr<Game> pInstance)
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            assert(!mInstance.get() && "Game::Initialize: already initialized");
+            orbit_Log::info("Game::Initialize");
+#endif // DEBUG
+
+            if (!mInstance.get())
+                mInstance = pInstance;
+
+            return mInstance;
+        }
+
+        void Game::Terminate() noexcept
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("Game::Terminate");
+#endif // DEBUG
+
+            mInstance.reset();
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     }

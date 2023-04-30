@@ -8,49 +8,44 @@
  * SOFTWARE.
 **/
 
-#pragma once
-
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// ALIASES
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-static constexpr const int ORBIT_OK = 0;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::windows::WinGraphics
-#ifndef ORBIT_WIN_GRAPHICS_HPP
-#include <orbit/windows/graphics/WinGraphics.hpp>
-#endif /// !ORBIT_WIN_GRAPHICS_HPP
-
-// Include orbit::gl::GLRenderer
-#ifndef ORBIT_GL_RENDERER_HPP
-#include <orbit/gl/render/GLRenderer.hpp>
-#endif /// !ORBIT_GL_RENDERER_HPP
-
-// Include OrbitGame
+// HEADER
 #ifndef ORBIT_GAME_HPP
 #include <core/game/OrbitGame.hpp>
 #endif /// !ORBIT_GAME_HPP
 
-// DEBUG
-#ifdef ORBIT_DEBUG
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// OrbitGame
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::debug
-#ifndef ORBIT_CORE_DEBUG_HPP
-#include <orbit/core/cfg/orbit_debug.hpp>
-#endif /// !ORBIT_CORE_DEBUG_HPP
+namespace orbit
+{
 
-// Include orbit::core::ConsoleLogger
-#ifndef ORBIT_CORE_CONSOLE_LOGGER_HPP
-#include <orbit/core/log/ConsoleLogger.hpp>
-#endif /// !ORBIT_CORE_CONSOLE_LOGGER_HPP
+    namespace core
+    {
 
-#endif
-// DEBUG
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // CONSTRUCTOR & DESTRUCTOR
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        OrbitGame::OrbitGame()
+            : Game()
+        {
+        }
+
+        OrbitGame::~OrbitGame() noexcept = default;
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    }
+
+}
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
