@@ -27,8 +27,11 @@
 #include <orbit/core/render/IRenderer.hxx>
 #endif /// !ORBIT_CORE_I_RENDERER_HXX
 
-// Include STL memory
-#include <memory>
+// Include STL vector
+#include <vector>
+
+// Include STL mutex
+#include <mutex>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -54,16 +57,27 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // ALIASES
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            using listener_ptr_t = std::shared_ptr<orbit_IRenderListener>;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // FIELDS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             static std::shared_ptr<RenderSystem> mInstance;
+
+            mutable std::mutex          mListenersMutex;
+            std::vector<listener_ptr_t> mLsiteners;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             explicit RenderSystem();
+
+            std::shared_ptr<orbit_IRenderListener> getNextListener(size_t& index) const;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
@@ -99,6 +113,13 @@ namespace orbit
 
             static std::shared_ptr<RenderSystem> Initialize(std::shared_ptr<RenderSystem> pInstance);
             static void Terminate() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.IRenderer
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual void addListener(std::shared_ptr<orbit_IRenderListener> pListener)    final;
+            virtual void removeListener(std::shared_ptr<orbit_IRenderListener> pListener) final;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -8,22 +8,10 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_I_RENDERER_HXX
-#define ORBIT_CORE_I_RENDERER_HXX
+#ifndef ORBIT_CORE_I_RENDER_LSITENER_HXX
+#define ORBIT_CORE_I_RENDER_LSITENER_HXX
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// INCLUDES
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// Include orbit::core::IRenderLsitener
-#ifndef ORBIT_CORE_I_RENDER_LSITENER_HXX
-#include <orbit/core/render/IRenderListener.hxx>
-#endif /// !ORBIT_CORE_I_RENDER_LSITENER_HXX
-
-// Include STL memory
-#include <memory>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -38,10 +26,10 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // IRenderer
+        // IRenderListener
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class IRenderer
+        class IRenderListener
         {
 
         public:
@@ -52,18 +40,17 @@ namespace orbit
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~IRenderer() noexcept = default;
+            virtual ~IRenderListener() noexcept = default;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual void addListener(std::shared_ptr<orbit_IRenderListener> pListener)    = 0;
-            virtual void removeListener(std::shared_ptr<orbit_IRenderListener> pListener) = 0;
+            virtual void onRender() = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        }; /// orbit::core::IRenderer
+        }; /// orbit::core::IRenderListener
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -71,9 +58,9 @@ namespace orbit
 
 } /// orbit
 
-using orbit_IRenderer = orbit::core::IRenderer;
-#define ORBIT_CORE_I_RENDERER_DECL
+using orbit_IRenderListener = orbit::core::IRenderListener;
+#define ORBIT_CORE_I_RENDER_LSITENER_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_I_RENDERER_HXX
+#endif /// !ORBIT_CORE_I_RENDER_LSITENER_HXX

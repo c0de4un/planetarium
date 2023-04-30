@@ -52,8 +52,11 @@ namespace orbit
 
         RenderSystem::RenderSystem()
             :
-            System()
+            System(),
+            mListenersMutex(),
+            mLsiteners()
         {
+            mLsiteners.reserve(2);
         }
 
         RenderSystem::~RenderSystem() noexcept = default;
@@ -70,6 +73,19 @@ namespace orbit
         bool RenderSystem::isInitialized() noexcept
         {
             return static_cast<bool>(mInstance.get());
+        }
+
+        std::shared_ptr<orbit_IRenderListener> RenderSystem::getNextListener(size_t& index) const
+        {
+            std::unique_lock<std::mutex> lock(mListenersMutex);
+
+            const size_t listenersCount(mLsiteners.size());
+            if (!listenersCount || listenersCount < index)
+                return std::shared_ptr<orbit_IRenderListener>(nullptr);
+
+            index++;
+
+            return mLsiteners[index];
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,6 +110,37 @@ namespace orbit
             orbit_Log::info("RenderSystem::Terminate");
 #endif // DEBUG
             mInstance.reset();
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.IRenderer
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        void RenderSystem::addListener(std::shared_ptr<orbit_IRenderListener> pListener)
+        {
+            std::unique_lock<std::mutex>(mListenersMutex);
+
+            mLsiteners.push_back(pListener); // Copy instead of move
+        }
+
+        void RenderSystem::removeListener(std::shared_ptr<orbit_IRenderListener> pListener)
+        {
+            std::unique_lock<std::mutex>(mListenersMutex);
+
+            const auto begin_it( mLsiteners.cbegin() );
+            const auto end_it( mLsiteners.cend() );
+            auto iterator( mLsiteners.begin() );
+
+            while (iterator != end_it)
+            {
+                if (iterator->get() == pListener.get())
+                {
+                    mLsiteners.erase(iterator);
+                    break;
+                }
+
+                iterator++;
+            }
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

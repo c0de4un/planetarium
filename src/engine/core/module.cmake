@@ -28,6 +28,7 @@ set( ENGINE_HEADERS
     # GRAPHICS
     "${ENGINE_CORE_PUBLIC_DIR}graphics/Graphics.hpp"
     # RENDER
+    "${ENGINE_CORE_PUBLIC_DIR}render/IRenderListener.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}render/IRenderer.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}render/RenderSystem.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}render/RenderSystemProvider.hpp"
