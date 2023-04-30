@@ -30,6 +30,15 @@
 // Include STL atomic
 #include <atomic>
 
+// Include STL memory
+#include <memory>
+
+// Include STL mutex
+#include <mutex>
+
+// Include STL vector
+#include <vector>
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,21 +58,55 @@ namespace orbit
         class GameObject : public orbit_Entity, public orbit_ILoadable
         {
 
+        private:
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            void removeChildren() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
         protected:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // ALIASES
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            using object_ptr = std::shared_ptr<GameObject>;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // FIELDS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            std::atomic_bool mLoaded;
+            std::atomic_bool        mLoaded;
+            mutable std::mutex      mChildrenMutex;
+            std::vector<object_ptr> mChildren;
+            GameObject*             mParent;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             explicit GameObject();
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // GETTERS & SETTERS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            std::shared_ptr<GameObject> getNextChild(const size_t iter) const;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.GameObject
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool onAttaching(GameObject* const parent);
+            virtual void onDetaching();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
@@ -92,12 +135,23 @@ namespace orbit
 
             virtual bool isLoaded() const noexcept final;
 
+            bool isAttached() const noexcept;
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.ILoadable
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             virtual bool Load()   override;
             virtual void Unload() override;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.GameObject
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool attachObject(object_ptr pChild);
+            virtual bool attachObject(GameObject* const pChild);
+
+            virtual void detachObject(GameObject* pChild);
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
