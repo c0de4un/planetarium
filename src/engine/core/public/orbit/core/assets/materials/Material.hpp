@@ -27,6 +27,12 @@
 #include <orbit/core/assets/materials/IMaterial.hxx>
 #endif /// !ORBIT_CORE_I_MATERIAL_HXX
 
+// Include STL mutex
+#include <mutex>
+
+// Include STL map
+#include <map>
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,6 +57,13 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // FIELDS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            std::mutex                      mSlotsMutex;
+            std::map<unsigned char, slot_t> mSlots;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -72,6 +85,13 @@ namespace orbit
             explicit Material();
 
             virtual ~Material() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.IMaterial
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool attachSlot(const unsigned char slotType, slot_t pSlot) override;
+            virtual void detachSlot(const unsigned char slotType) override;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -35,11 +35,23 @@ namespace orbit
         // CONSTRUCTOR & DESTRUCTOR
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        Shader::Shader()
+        Shader::Shader(const unsigned char shaderType)
+            :
+            Asset(),
+            mShaderType(shaderType)
         {
         }
 
         Shader::~Shader() noexcept = default;
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // GETTERS & SETTERS
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        unsigned char Shader::getShaderType() const noexcept
+        {
+            return mShaderType;
+        }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

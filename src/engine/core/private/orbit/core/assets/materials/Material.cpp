@@ -37,11 +37,33 @@ namespace orbit
 
         Material::Material()
             :
-            Asset()
+            Asset(),
+            mSlotsMutex(),
+            mSlots()
         {
         }
 
         Material::~Material() noexcept = default;
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.IMaterial
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        bool Material::attachSlot(const unsigned char slotType, slot_t pSlot)
+        {
+            std::unique_lock<std::mutex> lock( mSlotsMutex );
+
+            mSlots[slotType] = pSlot;
+
+            return true;
+        }
+
+        void Material::detachSlot(const unsigned char slotType)
+        {
+            std::unique_lock<std::mutex> lock( mSlotsMutex );
+
+            mSlots.erase(slotType);
+        }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

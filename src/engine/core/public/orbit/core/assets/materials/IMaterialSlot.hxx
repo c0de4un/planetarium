@@ -8,8 +8,8 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_I_MATERIAL_HXX
-#define ORBIT_CORE_I_MATERIAL_HXX
+#ifndef ORBIT_CORE_I_MATERIAL_SLOT_HXX
+#define ORBIT_CORE_I_MATERIAL_SLOT_HXX
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -17,13 +17,8 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::core::IMaterialSlot
-#ifndef ORBIT_CORE_I_MATERIAL_SLOT_HXX
-#include <orbit/core/assets/materials/IMaterialSlot.hxx>
-#endif /// !ORBIT_CORE_I_MATERIAL_SLOT_HXX
-
-// Include STL memory
-#include <memory>
+// Include orbit::core::EMaterialSlots
+#include <orbit/core/assets/materials/EMaterialSlots.hpp>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -38,10 +33,10 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // IMaterial
+        // IMaterialSlot
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class IMaterial
+        class IMaterialSlot
         {
 
         public:
@@ -49,23 +44,16 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // ALIASES
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            using slot_t = std::shared_ptr<orbit_IMaterialSlot>;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~IMaterial() noexcept = default;
+            virtual ~IMaterialSlot() noexcept = default;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS
+            // GETTERS & SETTERS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual bool attachSlot(const unsigned char slotType, slot_t pSlot) = 0;
-            virtual void detachSlot(const unsigned char slotType)   = 0;
+            virtual unsigned char getSlotType() const noexcept = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -77,9 +65,9 @@ namespace orbit
 
 }
 
-using orbit_IMaterial = orbit::core::IMaterial;
-#define ORBIT_CORE_I_MATERIAL_DECL
+using orbit_IMaterialSlot = orbit::core::IMaterialSlot;
+#define ORBIT_CORE_I_MATERIAL_SLOT_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_I_MATERIAL_HXX
+#endif /// !ORBIT_CORE_I_MATERIAL_SLOT_HXX
