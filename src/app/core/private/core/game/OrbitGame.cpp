@@ -85,6 +85,15 @@ namespace orbit
             return Game::onStart();
         }
 
+        void OrbitGame::onRender()
+        {
+            if (!isStarted() || isPaused())
+                return;
+
+            // Draw 3D Scene
+            mCamera3D->RenderScene(mScene3D);
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     }
