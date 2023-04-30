@@ -8,24 +8,14 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_GAME_HPP
-#define ORBIT_GAME_HPP
+#ifndef ORBIT_CORE_SCENE_3D_HPP
+#define ORBIT_CORE_SCENE_3D_HPP
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// Include orbit::core::Game
-#ifndef ORBIT_CORE_GAME_HPP
-#include <orbit/core/game/Game.hpp>
-#endif /// !ORBIT_CORE_GAME_HPP
-
-// Include orbit::core::Camera3D
-#ifndef ORBIT_CORE_CAMERA_3D_HPP
-#include <orbit/core/camera/Camera3D.hpp>
-#endif /// !ORBIT_CORE_CAMERA_3D_HPP
 
 // Include orbit::core::IScene
 #ifndef ORBIT_CORE_I_SCENE_HXX
@@ -45,45 +35,24 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // OrbitGame
+        // Scene3D
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class OrbitGame final : public orbit_Game
+        class Scene3D : public orbit_IScene
         {
-
-        private:
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // FIELDS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            std::shared_ptr<orbit_Camera3D> mCamera3D;
-            std::shared_ptr<orbit_IScene> mScene3D;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         protected:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS.Game
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            virtual bool onLoad() final;
-
-            virtual bool onStart() final;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            OrbitGame(const OrbitGame&)            = delete;
-            OrbitGame& operator=(const OrbitGame&) = delete;
-            OrbitGame(OrbitGame&&)                 = delete;
-            OrbitGame& operator=(OrbitGame&&)      = delete;
+            Scene3D(const Scene3D&)            = delete;
+            Scene3D& operator=(const Scene3D&) = delete;
+            Scene3D(Scene3D&&)                 = delete;
+            Scene3D& operator=(Scene3D&&)      = delete;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -95,24 +64,26 @@ namespace orbit
             // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            explicit OrbitGame();
+            explicit Scene3D();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~OrbitGame() noexcept;
+            virtual ~Scene3D() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        }; /// orbit::core::OrbitGame
+        };
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     }
 
-} /// orbit
+}
+
+using orbit_Scene3D = orbit::core::Scene3D;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_GAME_HPP
+#endif /// !ORBIT_CORE_SCENE_3D_HPP

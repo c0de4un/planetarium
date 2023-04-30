@@ -42,6 +42,9 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}camera/Camera3D.hpp"
     # OBJECTS
     "${ENGINE_CORE_PUBLIC_DIR}object/GameObject.hpp"
+    # SCENE
+    "${ENGINE_CORE_PUBLIC_DIR}scene/IScene.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}scene/Scene3D.hpp"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -68,6 +71,8 @@ set( ENGINE_SOURCES
     "${ENGINE_CORE_PRIVATE_DIR}camera/Camera3D.cpp"
     # OBJECTS
     "${ENGINE_CORE_PRIVATE_DIR}object/GameObject.cpp"
+    # SCENE
+    "${ENGINE_CORE_PRIVATE_DIR}scene/Scene3D.cpp"
     ${ENGINE_SOURCES} )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
