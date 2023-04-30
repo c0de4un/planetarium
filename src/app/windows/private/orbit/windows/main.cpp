@@ -36,6 +36,9 @@ void Start()
         // Initialize WinGraphics
         std::shared_ptr<orbit_WinGraphics> winGraphics(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>(orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() ))));
 
+        // Initialize GLRenderer
+        orbit_Renderer::Initialize(std::static_pointer_cast<orbit_Renderer, orbit_GLRenderer>(std::make_shared<orbit_GLRenderer>()));
+
         // Start
         if (!winGraphics->Start())
         {

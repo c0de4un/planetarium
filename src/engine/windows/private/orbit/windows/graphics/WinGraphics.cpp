@@ -19,6 +19,11 @@
 #include <orbit/windows/graphics/WinGraphics.hpp>
 #endif /// !ORBIT_WIN_GRAPHICS_HPP
 
+// Include orbit::core::RenderSystem
+#ifndef ORBIT_CORE_RENDER_SYSTEM_HPP
+#include <orbit/core/render/RenderSystem.hpp>
+#endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
+
 // DEBUG
 #ifdef ORBIT_DEBUG
 
@@ -62,6 +67,14 @@ namespace orbit
         {
 #ifdef ORBIT_DEBUG // DEBUG
             orbit_Log::info("WinGraphics::onStart");
+#endif // DEBUG
+
+            // Check RenderSystem
+#ifdef ORBIT_DEBUG // DEBUG
+            assert(orbit_Renderer::isInitialized() && "WinGraphics::onStart: missing RenderSystem");
+#else // !DEBUG
+            if (!orbit_Renderer::isInitialized())
+                return false;
 #endif // DEBUG
 
             glfwSetErrorCallback(WinGraphics::onError);

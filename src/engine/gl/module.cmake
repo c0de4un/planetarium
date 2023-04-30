@@ -24,6 +24,8 @@ add_definitions( -DORBIT_GL_MINOR=0 )
 set( ENGINE_HEADERS
     # CONFIG
     "${ENGINE_GL_PUBLIC_DIR}/config/orbit_gl.hpp"
+    # RENDER
+    "${ENGINE_GL_PUBLIC_DIR}/render/GLRenderer.hpp"
     ${ENGINE_HEADERS}
 )
 
@@ -31,8 +33,10 @@ set( ENGINE_HEADERS
 # SOURCES
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#set( ENGINE_SOURCES
-#    ${ENGINE_SOURCES}
-#)
+set( ENGINE_SOURCES
+    # RENDER
+    "${ENGINE_GL_PRIVATE_DIR}/render/GLRenderer.cpp"
+    ${ENGINE_SOURCES}
+)
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

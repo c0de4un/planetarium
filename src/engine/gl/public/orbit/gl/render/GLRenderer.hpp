@@ -8,8 +8,8 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_RENDER_SYSTEM_HPP
-#define ORBIT_CORE_RENDER_SYSTEM_HPP
+#ifndef ORBIT_GL_RENDERER_HPP
+#define ORBIT_GL_RENDERER_HPP
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -17,18 +17,10 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::core::System
-#ifndef ORBIT_CORE_SYSTEM_HPP
-#include <orbit/core/ecs/System.hpp>
-#endif /// !ORBIT_CORE_SYSTEM_HPP
-
-// Include orbit::core::IRenderer
-#ifndef ORBIT_CORE_I_RENDERER_HXX
-#include <orbit/core/render/IRenderer.hxx>
-#endif /// !ORBIT_CORE_I_RENDERER_HXX
-
-// Include STL memory
-#include <memory>
+// Include orbit::core::RenderSystem
+#ifndef ORBIT_CORE_RENDER_SYSTEM_HPP
+#include <orbit/core/render/RenderSystem.hpp>
+#endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -37,16 +29,16 @@
 namespace orbit
 {
 
-    namespace core
+    namespace gl
     {
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // RenderSystem
+        // GLRenderer
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class RenderSystem : public System, public IRenderer
+        class GLRenderer final : public orbit_Renderer
         {
 
         protected:
@@ -57,22 +49,22 @@ namespace orbit
             // FIELDS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            static std::shared_ptr<RenderSystem> mInstance;
-
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // CONSTRUCTOR
+            // METHODS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            explicit RenderSystem();
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // GETTERS & SETTERS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            RenderSystem(const RenderSystem&)            = delete;
-            RenderSystem& operator=(const RenderSystem&) = delete;
-            RenderSystem(RenderSystem&&)                 = delete;
-            RenderSystem& operator=(RenderSystem&&)      = delete;
+            GLRenderer(const GLRenderer&)            = delete;
+            GLRenderer& operator=(const GLRenderer&) = delete;
+            GLRenderer(GLRenderer&&)                 = delete;
+            GLRenderer& operator=(GLRenderer&&)      = delete;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -81,38 +73,29 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // CONSTRUCTOR
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            explicit GLRenderer();
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~RenderSystem() noexcept;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // GETTERS & SETTERS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            static std::shared_ptr<RenderSystem> getInstance();
-            static bool isInitialized() noexcept;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS.RenderSystem
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            static std::shared_ptr<RenderSystem> Initialize(std::shared_ptr<RenderSystem> pInstance);
-            static void Terminate() noexcept;
+            virtual ~GLRenderer() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        }; /// orbit::core::System
+        }; /// orbit::gl::GLRenderer
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    } /// orbit::core
+    } /// orbit::gl
 
 } /// orbit
 
-using orbit_Renderer = orbit::core::RenderSystem;
-#define ORBIT_CORE_RENDER_SYSTEM_DECL
+using orbit_GLRenderer = orbit::gl::GLRenderer;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
+#endif /// !ORBIT_GL_RENDERER_HPP

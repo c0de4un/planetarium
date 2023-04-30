@@ -67,6 +67,11 @@ namespace orbit
             return mInstance; // Copy and increase ref counter
         }
 
+        bool RenderSystem::isInitialized() noexcept
+        {
+            return static_cast<bool>(mInstance.get());
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.RenderSystem
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
