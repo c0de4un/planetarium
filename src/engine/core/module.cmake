@@ -51,6 +51,7 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMeshFactory.hxx"
     # ASSETS
     "${ENGINE_CORE_PUBLIC_DIR}assets/IAsset.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}assets/shaders/Shader.hpp"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,6 +80,8 @@ set( ENGINE_SOURCES
     "${ENGINE_CORE_PRIVATE_DIR}object/GameObject.cpp"
     # SCENE
     "${ENGINE_CORE_PRIVATE_DIR}scene/Scene3D.cpp"
+    # ASSETS
+    "${ENGINE_CORE_PRIVATE_DIR}assets/shaders/Shader.cpp"
     ${ENGINE_SOURCES} )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
