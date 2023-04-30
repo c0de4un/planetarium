@@ -25,6 +25,10 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}ecs/System.hpp"
     # GRAPHICS
     "${ENGINE_CORE_PUBLIC_DIR}graphics/Graphics.hpp"
+    # RENDER
+    "${ENGINE_CORE_PUBLIC_DIR}render/IRenderer.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}render/RenderSystem.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}render/RenderSystemProvider.hpp"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -39,6 +43,9 @@ set( ENGINE_SOURCES
     "${ENGINE_CORE_PRIVATE_DIR}ecs/System.cpp"
     # GRAPHICS
     "${ENGINE_CORE_PRIVATE_DIR}graphics/Graphics.cpp"
+    # RENDER
+    "${ENGINE_CORE_PRIVATE_DIR}render/RenderSystem.cpp"
+    "${ENGINE_CORE_PRIVATE_DIR}render/RenderSystemProvider.cpp"
     ${ENGINE_SOURCES} )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
