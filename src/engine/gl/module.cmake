@@ -26,6 +26,8 @@ set( ENGINE_HEADERS
     "${ENGINE_GL_PUBLIC_DIR}/config/orbit_gl.hpp"
     # RENDER
     "${ENGINE_GL_PUBLIC_DIR}/render/GLRenderer.hpp"
+    # GEOMETRY
+    "${ENGINE_GL_PUBLIC_DIR}/mesh/GLGeometry.hpp"
     ${ENGINE_HEADERS}
 )
 
@@ -36,6 +38,8 @@ set( ENGINE_HEADERS
 set( ENGINE_SOURCES
     # RENDER
     "${ENGINE_GL_PRIVATE_DIR}/render/GLRenderer.cpp"
+    # GEOMETRY
+    "${ENGINE_GL_PRIVATE_DIR}/mesh/GLGeometry.cpp"
     ${ENGINE_SOURCES}
 )
 

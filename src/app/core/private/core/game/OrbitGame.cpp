@@ -74,6 +74,8 @@ namespace orbit
             std::shared_ptr<orbit_Scene3D> scene( std::make_shared<orbit_Scene3D>() );
             mScene3D = std::static_pointer_cast<orbit_IScene, orbit_Scene3D>( scene );
 
+            // Create Planet
+
             // Load Scene and attached Objects
             if (!scene->Load())
             {

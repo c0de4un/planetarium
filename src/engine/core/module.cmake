@@ -48,6 +48,7 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}scene/Scene3D.hpp"
     # GEOMETRY
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMesh.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}mesh/IMeshFactory.hxx"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
