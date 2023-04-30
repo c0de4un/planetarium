@@ -63,6 +63,11 @@ namespace orbit
             return mInstance; // Copy and increase ref. count
         }
 
+        bool Graphics::isInitialized() noexcept
+        {
+            return static_cast<bool>(mInstance.get());
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

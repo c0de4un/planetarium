@@ -29,6 +29,9 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}render/IRenderer.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}render/RenderSystem.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}render/RenderSystemProvider.hpp"
+    # GAME
+    "${ENGINE_CORE_PUBLIC_DIR}game/IGame.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}game/Game.hpp"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -46,6 +49,8 @@ set( ENGINE_SOURCES
     # RENDER
     "${ENGINE_CORE_PRIVATE_DIR}render/RenderSystem.cpp"
     "${ENGINE_CORE_PRIVATE_DIR}render/RenderSystemProvider.cpp"
+    # GAME
+    "${ENGINE_CORE_PRIVATE_DIR}game/Game.cpp"
     ${ENGINE_SOURCES} )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

@@ -8,8 +8,8 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_GRAPHICS_HPP
-#define ORBIT_CORE_GRAPHICS_HPP
+#ifndef ORBIT_CORE_GAME_HPP
+#define ORBIT_CORE_GAME_HPP
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -25,8 +25,13 @@
 #include <orbit/core/ecs/System.hpp>
 #endif /// !ORBIT_CORE_SYSTEM_HPP
 
+// Include orbit::core::IGame
+#ifndef ORBIT_CORE_I_GAME_HXX
+#include <orbit/core/game/IGame.hxx>
+#endif /// !ORBIT_CORE_I_GAME_HXX
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// TYPES
+// Game
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 namespace orbit
@@ -38,10 +43,10 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // Graphics
+        // Game
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class Graphics : public orbit_System
+        class Game : public orbit_System, public orbit_IGame
         {
 
         protected:
@@ -52,22 +57,31 @@ namespace orbit
             // FIELDS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            static std::shared_ptr<Graphics> mInstance;
+            static std::shared_ptr<Game> mInstance;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            explicit Graphics();
+            explicit Game();
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.System
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool onStart() override;
+            virtual bool onResume() override;
+            virtual bool onPause() override;
+            virtual void onStop() override;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            Graphics(const Graphics&)            = delete;
-            Graphics& operator=(const Graphics&) = delete;
-            Graphics(Graphics&&)                 = delete;
-            Graphics& operator=(Graphics&&)      = delete;
+            Game(const Game&)            = delete;
+            Game& operator=(const Game&) = delete;
+            Game(Game&&)                 = delete;
+            Game& operator=(Game&&)      = delete;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -79,25 +93,31 @@ namespace orbit
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~Graphics() noexcept;
+            virtual ~Game() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // GETTERS & SETTERS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            static std::shared_ptr<Graphics> getInstance();
+            static std::shared_ptr<Game> getInstance();
             static bool isInitialized() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS
+            // METHODS.IGame
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            static std::shared_ptr<Graphics> Initialize(std::shared_ptr<Graphics> pInstance);
+            virtual bool onError(const char* const msg) noexcept override;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.Game
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            static std::shared_ptr<Game> Initialize(std::shared_ptr<Game> pInstance);
             static void Terminate() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        }; /// orbit::core::Graphics
+        }; /// orbit::core::Game
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -105,8 +125,9 @@ namespace orbit
 
 } /// orbit
 
-using orbit_Graphics = orbit::core::Graphics;
+using orbit_Game = orbit::core::Game;
+#define ORBIT_CORE_GAME_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_GRAPHICS_HPP
+#endif /// !ORBIT_CORE_GAME_HPP
