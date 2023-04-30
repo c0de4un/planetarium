@@ -8,8 +8,7 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_I_ASSET_HXX
-#define ORBIT_CORE_I_ASSET_HXX
+#pragma once
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -26,41 +25,22 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // IAsset
+        // EAssetStates
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class IAsset
+        enum EAssetStates : unsigned char
         {
 
-        public:
-
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // DESTRUCTOR
+            // CONSTANTS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~IAsset() noexcept = default;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // GETTERS & SETTERS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            virtual size_t getUsers() const noexcept = 0;
-
-            virtual bool isLoaded() const noexcept    = 0;
-            virtual bool isLoading() const noexcept   = 0;
-            virtual bool isUnloading() const noexcept = 0;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            virtual void addUser()    noexcept = 0;
-            virtual void removeUser() noexcept = 0;
-
-            virtual bool Load()   = 0;
-            virtual void Unload(const bool force = false) = 0;
+            ASSET_STATE_NONE      = 0,
+            ASSET_STATE_LOADING   = 1,
+            ASSET_STATE_LOADED    = 2,
+            ASSET_STATE_UNLOADING = 3
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -72,9 +52,6 @@ namespace orbit
 
 }
 
-using orbit_IAsset = orbit::core::IAsset;
-#define ORBIT_CORE_I_ASSET_DECL
+using orbit_EAssetStates = orbit::core::EAssetStates;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-#endif /// !ORBIT_CORE_I_ASSET_HXX

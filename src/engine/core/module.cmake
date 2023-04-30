@@ -50,6 +50,7 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMesh.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMeshFactory.hxx"
     # ASSETS
+    "${ENGINE_CORE_PUBLIC_DIR}assets/EAssetStates.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}assets/IAsset.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}assets/shaders/Shader.hpp"
     ${ENGINE_HEADERS} )
