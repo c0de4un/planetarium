@@ -33,6 +33,9 @@ void Start()
     // Guarded-Block
     try
     {
+        // Initialize AssetsManager
+        orbit_Assets::Initialize( std::make_shared<orbit_Assets>() );
+
         // Initialize WinGraphics
         std::shared_ptr<orbit_WinGraphics> winGraphics(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>(orbit_Graphics::Initialize(std::static_pointer_cast<orbit_WinGraphics, orbit_Graphics>( std::make_shared<orbit_WinGraphics>() ))));
 
@@ -93,6 +96,9 @@ void Stop()
 
         // Terminate Instances
         orbit_Game::Terminate();
+
+        // Terminate AssetsManager
+        orbit_Assets::Terminate();
 
 #ifdef ORBIT_DEBUG // dEBUG
     orbit_Log::Terminate();

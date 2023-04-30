@@ -32,6 +32,11 @@ static constexpr const int ORBIT_OK = 0;
 #include <orbit/gl/render/GLRenderer.hpp>
 #endif /// !ORBIT_GL_RENDERER_HPP
 
+// Include orbit::core::AssetsManger
+#ifndef ORBIT_CORE_ASSETS_MANAGER_HPP
+#include <orbit/core/assets/AssetsManager.hpp>
+#endif /// !ORBIT_CORE_ASSETS_MANAGER_HPP
+
 // Include OrbitGame
 #ifndef ORBIT_GAME_HPP
 #include <core/game/OrbitGame.hpp>

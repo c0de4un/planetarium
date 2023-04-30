@@ -50,6 +50,7 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMesh.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMeshFactory.hxx"
     # ASSETS
+    "${ENGINE_CORE_PUBLIC_DIR}assets/AssetsManager.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}assets/EAssetStates.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}assets/IAsset.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}assets/Asset.hpp"
@@ -89,6 +90,7 @@ set( ENGINE_SOURCES
     # SCENE
     "${ENGINE_CORE_PRIVATE_DIR}scene/Scene3D.cpp"
     # ASSETS
+    "${ENGINE_CORE_PRIVATE_DIR}assets/AssetsManager.cpp"
     "${ENGINE_CORE_PRIVATE_DIR}assets/Asset.cpp"
     "${ENGINE_CORE_PRIVATE_DIR}assets/shaders/Shader.cpp"
     "${ENGINE_CORE_PRIVATE_DIR}assets/materials/Material.cpp"

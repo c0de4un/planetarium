@@ -29,6 +29,11 @@
 #include <orbit/core/render/RenderSystem.hpp>
 #endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
 
+// Include orbit::core::AssetsManger
+#ifndef ORBIT_CORE_ASSETS_MANAGER_HPP
+#include <orbit/core/assets/AssetsManager.hpp>
+#endif /// !ORBIT_CORE_ASSETS_MANAGER_HPP
+
 #ifdef ORBIT_DEBUG // DEBUG
 
 // Include orbit::debug
@@ -144,6 +149,14 @@ namespace orbit
         {
 #ifdef ORBIT_DEBUG // DEBUG
             orbit_Log::info("Game::onStart");
+#endif // DEBUG
+
+            // Check AssetsManager
+#ifdef ORBIT_DEBUG // DEBUG
+            assert(orbit_Assets::getInstance() != nullptr && "Game::onStart: Assets manager is not initialized");
+#else // !DEBUG
+            if (!orbit_Assets.get())
+                return false;
 #endif // DEBUG
 
             // Check RenderSystem
