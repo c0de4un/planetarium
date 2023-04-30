@@ -43,6 +43,14 @@ namespace orbit
         Camera3D::~Camera3D() noexcept = default;
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.ICamera
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        void Camera3D::RenderScene(std::shared_ptr<orbit_IScene> pScene)
+        {
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     } /// orbit::core
 

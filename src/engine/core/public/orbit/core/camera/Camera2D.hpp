@@ -73,6 +73,12 @@ namespace orbit
             virtual ~Camera2D() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.ICamera
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual void RenderScene(std::shared_ptr<orbit_IScene> pScene) override;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         }; /// orbit::core::Camera2D
 

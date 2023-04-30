@@ -43,6 +43,14 @@ namespace orbit
         Camera2D::~Camera2D() noexcept = default;
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.ICamera
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        void Camera2D::RenderScene(std::shared_ptr<orbit_IScene> pScene)
+        {
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     } /// orbit::core
 
