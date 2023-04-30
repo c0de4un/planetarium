@@ -22,6 +22,11 @@
 #include <orbit/core/render/RenderSystem.hpp>
 #endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
 
+// Include orbit::gl
+#ifndef ORBIT_GL_HPP
+#include <orbit/gl/config/orbit_gl.hpp>
+#endif /// !ORBIT_GL_HPP
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -83,6 +88,15 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             virtual ~GLRenderer() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.GLRenderer
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            /**
+            * @thread_safety - called only from render-thread
+            **/
+            void Draw();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

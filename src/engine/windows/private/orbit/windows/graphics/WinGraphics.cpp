@@ -19,10 +19,10 @@
 #include <orbit/windows/graphics/WinGraphics.hpp>
 #endif /// !ORBIT_WIN_GRAPHICS_HPP
 
-// Include orbit::core::RenderSystem
-#ifndef ORBIT_CORE_RENDER_SYSTEM_HPP
-#include <orbit/core/render/RenderSystem.hpp>
-#endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
+// Include orbit::gl::GLRenderer
+#ifndef ORBIT_GL_RENDERER_HPP
+#include <orbit/gl/render/GLRenderer.hpp>
+#endif /// !ORBIT_GL_RENDERER_HPP
 
 // DEBUG
 #ifdef ORBIT_DEBUG
@@ -190,8 +190,14 @@ namespace orbit
             assert(!glfwWindowShouldClose(mWindow) && "WinGraphics::Loop: !glfwWindowShouldClose");
 #endif // DEBUG
 
+            // GLRenderer
+            std::shared_ptr<orbit_GLRenderer> glRenderer( std::static_pointer_cast<orbit_GLRenderer, orbit_Renderer>(orbit_Renderer::getInstance()) );
+
             while (isStarted() && !glfwWindowShouldClose(mWindow))
             {
+                if (glRenderer->isStarted() && !glRenderer->isPaused())
+                    glRenderer->Draw();
+
                 glfwSwapBuffers(mWindow);
 
                 glfwPollEvents();
