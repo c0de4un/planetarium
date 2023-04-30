@@ -54,9 +54,8 @@ namespace orbit
             :
             System(),
             mListenersMutex(),
-            mLsiteners()
+            mListeners()
         {
-            mLsiteners.reserve(2);
         }
 
         RenderSystem::~RenderSystem() noexcept = default;
@@ -75,17 +74,15 @@ namespace orbit
             return static_cast<bool>(mInstance.get());
         }
 
-        std::shared_ptr<orbit_IRenderListener> RenderSystem::getNextListener(size_t& index) const
+        std::shared_ptr<orbit_IRenderListener> RenderSystem::getNextListener(size_t index) const
         {
             std::unique_lock<std::mutex> lock(mListenersMutex);
 
-            const size_t listenersCount(mLsiteners.size());
-            if (!listenersCount || listenersCount < index)
+            const size_t listenersCount(mListeners.size());
+            if (mListeners.empty() || !listenersCount || (listenersCount - 1) < index)
                 return std::shared_ptr<orbit_IRenderListener>(nullptr);
 
-            index++;
-
-            return mLsiteners[index];
+            return mListeners.at(index);
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -102,7 +99,7 @@ namespace orbit
             {
                 std::unique_lock<std::mutex> lock(mListenersMutex);
 
-                mLsiteners.clear();
+                mListeners.clear();
 
                 lock.unlock();
             }
@@ -146,22 +143,22 @@ namespace orbit
         {
             std::unique_lock<std::mutex>(mListenersMutex);
 
-            mLsiteners.push_back(pListener); // Copy instead of move
+            mListeners.push_back(pListener); // Copy instead of move
         }
 
         void RenderSystem::removeListener(std::shared_ptr<orbit_IRenderListener> pListener)
         {
             std::unique_lock<std::mutex>(mListenersMutex);
 
-            const auto begin_it( mLsiteners.cbegin() );
-            const auto end_it( mLsiteners.cend() );
-            auto iterator( mLsiteners.begin() );
+            const auto begin_it( mListeners.cbegin() );
+            const auto end_it( mListeners.cend() );
+            auto iterator( mListeners.begin() );
 
             while (iterator != end_it)
             {
                 if (iterator->get() == pListener.get())
                 {
-                    mLsiteners.erase(iterator);
+                    mListeners.erase(iterator);
                     break;
                 }
 

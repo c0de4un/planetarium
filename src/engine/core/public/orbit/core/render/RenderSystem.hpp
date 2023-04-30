@@ -69,7 +69,7 @@ namespace orbit
             static std::shared_ptr<RenderSystem> mInstance;
 
             mutable std::mutex          mListenersMutex;
-            std::vector<listener_ptr_t> mLsiteners;
+            std::vector<listener_ptr_t> mListeners;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // CONSTRUCTOR
@@ -77,7 +77,7 @@ namespace orbit
 
             explicit RenderSystem();
 
-            std::shared_ptr<orbit_IRenderListener> getNextListener(size_t& index) const;
+            std::shared_ptr<orbit_IRenderListener> getNextListener(size_t index) const;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.System

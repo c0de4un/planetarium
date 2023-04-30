@@ -19,6 +19,14 @@
 #include <core/game/OrbitGame.hpp>
 #endif /// !ORBIT_GAME_HPP
 
+#ifdef ORBIT_DEBUG /// DEBUG
+
+#ifndef ORBIT_CORE_DEBUG_HPP
+#include <orbit/core/cfg/orbit_debug.hpp>
+#endif /// !ORBIT_CORE_DEBUG_HPP
+
+#endif /// DEBUG
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // OrbitGame
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -41,6 +49,28 @@ namespace orbit
         }
 
         OrbitGame::~OrbitGame() noexcept = default;
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.Game
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        bool OrbitGame::onLoad()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("OrbitGame::onLoad");
+#endif // DEBUG
+
+            return Game::onLoad();
+        }
+
+        bool OrbitGame::onStart()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("OrbitGame::onStart");
+#endif // DEBUG
+
+            return Game::onStart();
+        }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

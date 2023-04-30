@@ -19,6 +19,17 @@
 #include <orbit/gl/render/GLRenderer.hpp>
 #endif /// !ORBIT_GL_RENDERER_HPP
 
+// DEBUG
+#ifdef ORBIT_DEBUG
+
+// Include orbit::debug
+#ifndef ORBIT_CORE_DEBUG_HPP
+#include <orbit/core/cfg/orbit_debug.hpp>
+#endif /// !ORBIT_CORE_DEBUG_HPP
+
+#endif
+// DEBUG
+// 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // GLRenderer
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -37,11 +48,52 @@ namespace orbit
 
         GLRenderer::GLRenderer()
             :
-            RenderSystem()
+            RenderSystem(),
+            mFirstFrame(true)
         {
         }
 
         GLRenderer::~GLRenderer() noexcept = default;
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.System
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        bool GLRenderer::onStart()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("GLRenderer::onStart");
+#endif // DEBUG
+
+            return System::onStart();
+        }
+
+        bool GLRenderer::onResume()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("GLRenderer::onResume");
+#endif // DEBUG
+
+            return System::onResume();
+        }
+
+        bool GLRenderer::onPause()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("GLRenderer::onPause");
+#endif // DEBUG
+
+            return System::onPause();
+        }
+
+        void GLRenderer::onStop()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("GLRenderer::onStop");
+#endif // DEBUG
+
+            System::onStop();
+        }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.GLRenderer
@@ -51,12 +103,36 @@ namespace orbit
         {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            // @TODO: Allow Listeners to handle render-thread
             size_t listenerIndex(0);
             std::shared_ptr<orbit_IRenderListener> listener(nullptr);
+
+            // First Frame
+            if (mFirstFrame)
+            {
+                mFirstFrame = false;
+
+                while (listener = getNextListener(listenerIndex))
+                {
+                    if (!isStarted())
+                        return;
+
+                    listener->onFirstFrame();
+
+                    listenerIndex++;
+                }
+            }
+
+            // Allow Listeners to handle render-thread
+            listenerIndex = 0;
+            listener = nullptr;
             while (listener = getNextListener(listenerIndex))
             {
+                if (!isStarted())
+                    return;
+
                 listener->onRender();
+
+                listenerIndex++;
             }
         }
 

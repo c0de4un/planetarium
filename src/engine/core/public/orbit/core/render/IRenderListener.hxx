@@ -48,6 +48,8 @@ namespace orbit
 
             virtual void onRender() = 0;
 
+            virtual void onFirstFrame() = 0;
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         }; /// orbit::core::IRenderListener

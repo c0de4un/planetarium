@@ -105,6 +105,18 @@ namespace orbit
 
             setState(WinGraphics::STATE_RUNNING);
 
+            // Start GLRenderer
+            std::shared_ptr<orbit_GLRenderer> glRenderer( std::static_pointer_cast<orbit_GLRenderer, orbit_Renderer>(orbit_Renderer::getInstance()) );
+            const bool result( glRenderer->Start() );
+            if (!result)
+            {
+#ifdef ORBIT_DEBUG // DEBUG
+                assert(mWindow && "WinGraphics::onStart: Failed to start GLRenderer");
+#else // !DEBUG
+                return false;
+#endif // DEBUG
+            }
+
             return true;
         }
 
@@ -184,14 +196,16 @@ namespace orbit
 
         void WinGraphics::Loop()
         {
-            std::cout << "WinGraphics::Loop\n";
-#ifdef ORBIT_DEBUG // DEBUG
-            assert(isStarted() && "WinGraphics::Loop: not started");
-            assert(!glfwWindowShouldClose(mWindow) && "WinGraphics::Loop: !glfwWindowShouldClose");
-#endif // DEBUG
-
             // GLRenderer
             std::shared_ptr<orbit_GLRenderer> glRenderer( std::static_pointer_cast<orbit_GLRenderer, orbit_Renderer>(orbit_Renderer::getInstance()) );
+
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("WinGraphics::Loop");
+            assert(isStarted() && "WinGraphics::Loop: not started");
+            assert(!glfwWindowShouldClose(mWindow) && "WinGraphics::Loop: !glfwWindowShouldClose");
+            assert(glRenderer->isStarted() && "WinGraphics::Loop: Render system is not started");
+            assert(!glRenderer->isPaused() && "WinGraphics::Loop: Render system is paused");
+#endif // DEBUG
 
             while (isStarted() && !glfwWindowShouldClose(mWindow))
             {

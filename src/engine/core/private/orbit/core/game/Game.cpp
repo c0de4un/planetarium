@@ -82,6 +82,19 @@ namespace orbit
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.Game
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        bool Game::onLoad()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::error("Game::onLoad");
+#endif // DEBUG
+
+            return true;
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.IGame
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -105,6 +118,22 @@ namespace orbit
 
         void Game::onRender()
         {
+        }
+
+        void Game::onFirstFrame()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::info("Game::onFirstFrame");
+#endif // DEBUG
+
+            if (!onLoad())
+            {
+#ifdef ORBIT_DEBUG // DEBUG
+                orbit_Log::error("Game::onFirstFrame: loading failed");
+#endif // DEBUG
+
+                Stop();
+            }
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
