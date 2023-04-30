@@ -34,6 +34,8 @@ set( ENGINE_HEADERS
     # GAME
     "${ENGINE_CORE_PUBLIC_DIR}game/IGame.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}game/Game.hpp"
+    # OBJECTS
+    "${ENGINE_CORE_PUBLIC_DIR}object/GameObject.hpp"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -54,6 +56,8 @@ set( ENGINE_SOURCES
     "${ENGINE_CORE_PRIVATE_DIR}render/RenderSystemProvider.cpp"
     # GAME
     "${ENGINE_CORE_PRIVATE_DIR}game/Game.cpp"
+    # OBJECTS
+    "${ENGINE_CORE_PRIVATE_DIR}object/GameObject.cpp"
     ${ENGINE_SOURCES} )
 
 # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
