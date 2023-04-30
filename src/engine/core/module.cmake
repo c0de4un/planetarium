@@ -21,6 +21,8 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}log/ILogger.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}log/ConsoleLogger.hpp"
     # ECS
+    "${ENGINE_CORE_PUBLIC_DIR}ecs/IEntity.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}ecs/Entity.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}ecs/ISystem.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}ecs/System.hpp"
     # GRAPHICS
@@ -43,6 +45,7 @@ set( ENGINE_SOURCES
     "${ENGINE_CORE_PRIVATE_DIR}log/Log.cpp"
     "${ENGINE_CORE_PRIVATE_DIR}log/ConsoleLogger.cpp"
     # ECS
+    "${ENGINE_CORE_PRIVATE_DIR}ecs/Entity.cpp"
     "${ENGINE_CORE_PRIVATE_DIR}ecs/System.cpp"
     # GRAPHICS
     "${ENGINE_CORE_PRIVATE_DIR}graphics/Graphics.cpp"
