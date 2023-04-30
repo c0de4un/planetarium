@@ -13,6 +13,9 @@ set_target_properties ( orbit PROPERTIES
     VERSION ${PROJECT_VERSION}
     RUNTIME_OUTPUT_DIRECTORY "${APP_BIN_OUTPUT_DIR}" )
 
+# Link with GLM
+target_include_directories( orbit PUBLIC "${GLM_INCLUDE_DIR}" )
+
 # Link with Engine.Core
 target_include_directories( orbit PUBLIC "${ENGINE_CORE_PUBLIC_INCLUDE_DIR}" )
 
