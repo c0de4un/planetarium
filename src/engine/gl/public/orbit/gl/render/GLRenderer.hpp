@@ -22,6 +22,11 @@
 #include <orbit/core/render/RenderSystem.hpp>
 #endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
 
+// Include orbit::core::IMeshFactory
+#ifndef ORBIT_CORE_I_MESH_FACTORY_HXX
+#include <orbit/core/mesh/IMeshFactory.hxx>
+#endif /// !ORBIT_CORE_I_MESH_FACTORY_HXX
+
 // Include orbit::gl
 #ifndef ORBIT_GL_HPP
 #include <orbit/gl/config/orbit_gl.hpp>
@@ -43,7 +48,7 @@ namespace orbit
         // GLRenderer
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class GLRenderer final : public orbit_Renderer
+        class GLRenderer final : public orbit_Renderer, public orbit_IMeshFactory
         {
 
         private:
@@ -105,6 +110,12 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             virtual ~GLRenderer() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.IMeshFactory
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual std::shared_ptr<orbit_IMesh> createSphere3D() final;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.GLRenderer

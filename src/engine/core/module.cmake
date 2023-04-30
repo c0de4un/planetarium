@@ -49,6 +49,8 @@ set( ENGINE_HEADERS
     # GEOMETRY
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMesh.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}mesh/IMeshFactory.hxx"
+    # ASSETS
+    "${ENGINE_CORE_PUBLIC_DIR}assets/IAsset.hxx"
     ${ENGINE_HEADERS} )
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

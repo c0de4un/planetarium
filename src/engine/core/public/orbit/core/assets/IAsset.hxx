@@ -8,22 +8,10 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_I_MESH_FACTORY_HXX
-#define ORBIT_CORE_I_MESH_FACTORY_HXX
+#ifndef ORBIT_CORE_I_ASSET_HXX
+#define ORBIT_CORE_I_ASSET_HXX
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// INCLUDES
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// Include orbit::core::IMesh
-#ifndef ORBIT_CORE_I_MESH_HXX
-#include <orbit/core/mesh/IMesh.hxx>
-#endif /// !ORBIT_CORE_I_MESH_HXX
-
-// Include STL memory
-#include <memory>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -38,10 +26,10 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // IMeshFactory
+        // IAsset
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class IMeshFactory
+        class IAsset
         {
 
         public:
@@ -52,13 +40,27 @@ namespace orbit
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~IMeshFactory() noexcept = default;
+            virtual ~IAsset() noexcept = default;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // GETTERS & SETTERS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual size_t getUsers() const noexcept = 0;
+
+            virtual bool isLoaded() const noexcept    = 0;
+            virtual bool isLoading() const noexcept   = 0;
+            virtual bool isUnloading() const noexcept = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual std::shared_ptr<orbit_IMesh> createSphere3D() = 0;
+            virtual void addUser()    noexcept = 0;
+            virtual void removeUser() noexcept = 0;
+
+            virtual bool Load()   = 0;
+            virtual void Unload() = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -70,9 +72,9 @@ namespace orbit
 
 }
 
-using orbit_IMeshFactory = orbit::core::IMeshFactory;
-#define ORBIT_CORE_I_MESH_FACTORY_DECL
+using orbit_IAsset = orbit::core::IAsset;
+#define ORBIT_CORE_I_ASSET_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_I_MESH_FACTORY_HXX
+#endif /// !ORBIT_CORE_I_ASSET_HXX

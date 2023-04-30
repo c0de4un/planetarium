@@ -96,6 +96,19 @@ namespace orbit
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.IMeshFactory
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        std::shared_ptr<orbit_IMesh> GLRenderer::createSphere3D()
+        {
+            std::shared_ptr<orbit_IMesh> result(nullptr);
+
+            // @TODO: GLRenderer::createSphere3D()
+
+            return result;
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.GLRenderer
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
