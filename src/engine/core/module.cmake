@@ -41,6 +41,7 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}camera/Camera2D.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}camera/Camera3D.hpp"
     # OBJECTS
+    "${ENGINE_CORE_PUBLIC_DIR}object/ILoadable.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}object/GameObject.hpp"
     # SCENE
     "${ENGINE_CORE_PUBLIC_DIR}scene/IScene.hxx"

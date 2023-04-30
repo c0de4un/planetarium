@@ -8,24 +8,10 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_SCENE_3D_HPP
-#define ORBIT_CORE_SCENE_3D_HPP
+#ifndef ORBIT_CORE_I_LOADABLE_HXX
+#define ORBIT_CORE_I_LOADABLE_HXX
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// INCLUDES
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// Include orbit::core::GameObject
-#ifndef ORBIT_CORE_GAME_OBJECT_HPP
-#include <orbit/core/object/GameObject.hpp>
-#endif /// !ORBIT_CORE_GAME_OBJECT_HPP
-
-// Include orbit::core::IScene
-#ifndef ORBIT_CORE_I_SCENE_HXX
-#include <orbit/core/scene/IScene.hxx>
-#endif /// !ORBIT_CORE_I_SCENE_HXX
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -40,42 +26,34 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // Scene3D
+        // ILoadable
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class Scene3D : public orbit_GameObject, public orbit_IScene
+        class ILoadable
         {
-
-        protected:
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // DELETED
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            Scene3D(const Scene3D&)            = delete;
-            Scene3D& operator=(const Scene3D&) = delete;
-            Scene3D(Scene3D&&)                 = delete;
-            Scene3D& operator=(Scene3D&&)      = delete;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         public:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // CONSTRUCTOR
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            explicit Scene3D();
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~Scene3D() noexcept;
+            virtual ~ILoadable() noexcept = default;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // GETTERS & SETTERS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool isLoaded() const noexcept = 0;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool Load()   = 0;
+            virtual void Unload() = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -87,8 +65,9 @@ namespace orbit
 
 }
 
-using orbit_Scene3D = orbit::core::Scene3D;
+using orbit_ILoadable = orbit::core::ILoadable;
+#define ORBIT_CORE_I_LOADABLE_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_SCENE_3D_HPP
+#endif /// !ORBIT_CORE_I_LOADABLE_HXX

@@ -71,7 +71,18 @@ namespace orbit
             mCamera3D = std::make_shared<orbit_Camera3D>();
 
             // Create 3D Scene
-            mScene3D = std::static_pointer_cast<orbit_IScene, orbit_Scene3D>( std::make_shared<orbit_Scene3D>() );
+            std::shared_ptr<orbit_Scene3D> scene( std::make_shared<orbit_Scene3D>() );
+            mScene3D = std::static_pointer_cast<orbit_IScene, orbit_Scene3D>( scene );
+
+            // Load Scene and attached Objects
+            if (!scene->Load())
+            {
+#ifdef ORBIT_DEBUG // DEBUG
+                orbit_Log::error("OrbitGame::onLoad: failed to load 3D Scene");
+#endif // DEBUG
+
+                return false;
+            }
 
             return Game::onLoad();
         }

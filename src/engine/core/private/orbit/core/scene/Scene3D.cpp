@@ -35,7 +35,12 @@ namespace orbit
         // CONSTRUCTOR & DESTRUCTOR
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        Scene3D::Scene3D()           = default;
+        Scene3D::Scene3D()
+            :
+            GameObject()
+        {
+        }
+
         Scene3D::~Scene3D() noexcept = default;
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

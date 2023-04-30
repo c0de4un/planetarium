@@ -22,6 +22,14 @@
 #include <orbit/core/ecs/Entity.hpp>
 #endif /// !ORBIT_CORE_ENTITY_HPP
 
+// Include orbit::core::ILoadable
+#ifndef ORBIT_CORE_I_LOADABLE_HXX
+#include <orbit/core/object/ILoadable.hxx>
+#endif /// !ORBIT_CORE_I_LOADABLE_HXX
+
+// Include STL atomic
+#include <atomic>
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -38,12 +46,18 @@ namespace orbit
         // GameObject
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class GameObject : public orbit_Entity
+        class GameObject : public orbit_Entity, public orbit_ILoadable
         {
 
         protected:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // FIELDS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            std::atomic_bool mLoaded;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // CONSTRUCTOR
@@ -71,6 +85,19 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             virtual ~GameObject() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // GETTERS & SETTERS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool isLoaded() const noexcept final;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.ILoadable
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual bool Load()   override;
+            virtual void Unload() override;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

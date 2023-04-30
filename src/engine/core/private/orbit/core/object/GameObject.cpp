@@ -35,8 +35,44 @@ namespace orbit
         // CONSTRUCTOR & DESTRUCTOR
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        GameObject::GameObject()           = default;
-        GameObject::~GameObject() noexcept = default;
+        GameObject::GameObject()
+            :
+            Entity(),
+            mLoaded(false)
+        {
+        }
+
+        GameObject::~GameObject() noexcept
+        {
+            Unload();
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // GETTERS & SETTERS
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        bool GameObject::isLoaded() const noexcept
+        {
+            return mLoaded;
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.ILoadable
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        bool GameObject::Load()
+        {
+            if (isLoaded())
+                return true;
+
+            return true;
+        }
+
+        void GameObject::Unload()
+        {
+            if (!isLoaded())
+                return;
+        }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
