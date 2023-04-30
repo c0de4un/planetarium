@@ -24,6 +24,11 @@
 #include <orbit/core/scene/Scene3D.hpp>
 #endif /// !ORBIT_CORE_SCENE_3D_HPP
 
+// Include orbit::core::IMaterial
+#ifndef ORBIT_CORE_I_MATERIAL_HXX
+#include <orbit/core/assets/materials/IMaterial.hxx>
+#endif /// !ORBIT_CORE_I_MATERIAL_HXX
+
 #ifdef ORBIT_DEBUG /// DEBUG
 
 #ifndef ORBIT_CORE_DEBUG_HPP
@@ -74,7 +79,27 @@ namespace orbit
             std::shared_ptr<orbit_Scene3D> scene( std::make_shared<orbit_Scene3D>() );
             mScene3D = std::static_pointer_cast<orbit_IScene, orbit_Scene3D>( scene );
 
-            // Create Planet
+            // @TODO: Create Material
+            //std::shared_ptr<orbit_IMaterial> planetMaterial( orbit_Assets::createMaterial() );
+
+            // @TODO: Load VertexShader
+            //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_VERTEX_SHADER, vertexShader);
+
+            // @TODO: Load Fragment Shader
+            //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_FRAGMENT_SHADER, fragmentShader);
+
+            // @TODO: Load Texture2D
+            //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_TEXTURE_2D, planetDiffuseTexture2D);
+
+            // @TODO: Create Planet
+            //std::shared_ptr<Planet> planet( std::make_shared<Planet>() );
+            //std::shared_ptr<orbit_GameObject> planet_gameObject( std::static_pointer_cast<orbit_GameObject, Planet>(planet) );
+
+            // @TODO: Attach Planet to Scene
+            //scene->attachObject(planet_gameObject);
+
+            // @TODO: Set Planet Material
+            //planet->setMaterial(planetMaterial);
 
             // Load Scene and attached Objects
             if (!scene->Load())
