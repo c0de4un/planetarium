@@ -35,6 +35,11 @@ set( ENGINE_HEADERS
     # GAME
     "${ENGINE_CORE_PUBLIC_DIR}game/IGame.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}game/Game.hpp"
+    # CAMERA
+    "${ENGINE_CORE_PUBLIC_DIR}camera/ICamera.hxx"
+    "${ENGINE_CORE_PUBLIC_DIR}camera/Camera.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}camera/Camera2D.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}camera/Camera3D.hpp"
     # OBJECTS
     "${ENGINE_CORE_PUBLIC_DIR}object/GameObject.hpp"
     ${ENGINE_HEADERS} )
@@ -57,6 +62,10 @@ set( ENGINE_SOURCES
     "${ENGINE_CORE_PRIVATE_DIR}render/RenderSystemProvider.cpp"
     # GAME
     "${ENGINE_CORE_PRIVATE_DIR}game/Game.cpp"
+    # CAMERA
+    "${ENGINE_CORE_PRIVATE_DIR}camera/Camera.cpp"
+    "${ENGINE_CORE_PRIVATE_DIR}camera/Camera2D.cpp"
+    "${ENGINE_CORE_PRIVATE_DIR}camera/Camera3D.cpp"
     # OBJECTS
     "${ENGINE_CORE_PRIVATE_DIR}object/GameObject.cpp"
     ${ENGINE_SOURCES} )

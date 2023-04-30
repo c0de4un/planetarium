@@ -8,8 +8,8 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_GAME_HPP
-#define ORBIT_GAME_HPP
+#ifndef ORBIT_CORE_CAMERA_HPP
+#define ORBIT_CORE_CAMERA_HPP
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -17,15 +17,15 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::core::Game
-#ifndef ORBIT_CORE_GAME_HPP
-#include <orbit/core/game/Game.hpp>
-#endif /// !ORBIT_CORE_GAME_HPP
+// Include orbit::core::GameObject
+#ifndef ORBIT_CORE_GAME_OBJECT_HPP
+#include <orbit/core/object/GameObject.hpp>
+#endif /// !ORBIT_CORE_GAME_OBJECT_HPP
 
-// Include orbit::core::Camera3D
-#ifndef ORBIT_CORE_CAMERA_3D_HPP
-#include <orbit/core/camera/Camera3D.hpp>
-#endif /// !ORBIT_CORE_CAMERA_3D_HPP
+// Include orbit::core::ICamera
+#ifndef ORBIT_CORE_I_CAMERA_HXX
+#include <orbit/core/camera/ICamera.hxx>
+#endif /// !ORBIT_CORE_I_CAMERA_HXX
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -40,44 +40,30 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // OrbitGame
+        // Camera
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class OrbitGame final : public orbit_Game
+        class Camera : public orbit_GameObject, public orbit_ICamera
         {
-
-        private:
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // FIELDS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            std::shared_ptr<orbit_Camera3D> mCamera3D;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         protected:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS.Game
+            // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual bool onLoad() final;
-
-            virtual bool onStart() final;
+            explicit Camera();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            OrbitGame(const OrbitGame&)            = delete;
-            OrbitGame& operator=(const OrbitGame&) = delete;
-            OrbitGame(OrbitGame&&)                 = delete;
-            OrbitGame& operator=(OrbitGame&&)      = delete;
+            Camera(const Camera&)            = delete;
+            Camera& operator=(const Camera&) = delete;
+            Camera(Camera&&)                 = delete;
+            Camera& operator=(Camera&&)      = delete;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -86,27 +72,23 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // CONSTRUCTOR
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            explicit OrbitGame();
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~OrbitGame() noexcept;
+            virtual ~Camera() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        }; /// orbit::core::OrbitGame
+        }; /// orbit::core::Camera
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    }
+    } /// orbit::core
 
 } /// orbit
 
+using orbit_Camera = orbit::core::Camera;
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_GAME_HPP
+#endif /// !ORBIT_CORE_CAMERA_HPP

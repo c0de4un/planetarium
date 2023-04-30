@@ -15,20 +15,12 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // HEADER
-#ifndef ORBIT_GAME_HPP
-#include <core/game/OrbitGame.hpp>
-#endif /// !ORBIT_GAME_HPP
-
-#ifdef ORBIT_DEBUG /// DEBUG
-
-#ifndef ORBIT_CORE_DEBUG_HPP
-#include <orbit/core/cfg/orbit_debug.hpp>
-#endif /// !ORBIT_CORE_DEBUG_HPP
-
-#endif /// DEBUG
+#ifndef ORBIT_CORE_CAMERA_3D_HPP
+#include <orbit/core/camera/Camera3D.hpp>
+#endif /// !ORBIT_CORE_CAMERA_3D_HPP
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// OrbitGame
+// Camera3D
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 namespace orbit
@@ -43,43 +35,17 @@ namespace orbit
         // CONSTRUCTOR & DESTRUCTOR
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        OrbitGame::OrbitGame()
-            : Game(),
-            mCamera3D(nullptr)
+        Camera3D::Camera3D()
+            : Camera()
         {
         }
 
-        OrbitGame::~OrbitGame() noexcept = default;
-
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // METHODS.Game
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        bool OrbitGame::onLoad()
-        {
-#ifdef ORBIT_DEBUG // DEBUG
-            orbit_Log::info("OrbitGame::onLoad");
-#endif // DEBUG
-
-            // Create Camera3D for 3D Scene
-            mCamera3D = std::make_shared<orbit_Camera3D>();
-
-            return Game::onLoad();
-        }
-
-        bool OrbitGame::onStart()
-        {
-#ifdef ORBIT_DEBUG // DEBUG
-            orbit_Log::info("OrbitGame::onStart");
-#endif // DEBUG
-
-            return Game::onStart();
-        }
+        Camera3D::~Camera3D() noexcept = default;
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    }
+    } /// orbit::core
 
-}
+} /// orbit
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
