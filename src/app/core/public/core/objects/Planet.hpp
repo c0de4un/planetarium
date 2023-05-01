@@ -27,6 +27,11 @@
 #include <orbit/core/assets/materials/Material.hpp>
 #endif /// !ORBIT_CORE_MATERIAL_HPP
 
+// Include orbit::core::IMesh
+#ifndef ORBIT_CORE_I_MESH_HXX
+#include <orbit/core/mesh/IMesh.hxx>
+#endif /// !ORBIT_CORE_I_MESH_HXX
+
 #ifdef ORBIT_DEBUG // DEBUG
 
 // Inlcude orbig::debug
@@ -64,6 +69,7 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             std::shared_ptr<orbit_Material> mMaterial;
+            std::shared_ptr<orbit_IMesh>    mSphereMesh;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED

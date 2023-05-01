@@ -30,6 +30,8 @@ set( ENGINE_HEADERS
     "${ENGINE_GL_PUBLIC_DIR}/mesh/GLGeometry.hpp"
     # ASSETS
     "${ENGINE_GL_PUBLIC_DIR}/assets/shaders/GLShader.hpp"
+    # MESHES
+    "${ENGINE_GL_PUBLIC_DIR}/assets/mesh/Sphere.hpp"
     ${ENGINE_HEADERS}
 )
 
@@ -44,6 +46,8 @@ set( ENGINE_SOURCES
     "${ENGINE_GL_PRIVATE_DIR}/mesh/GLGeometry.cpp"
     # ASSETS
     "${ENGINE_GL_PRIVATE_DIR}/assets/shaders/GLShader.cpp"
+    # MESHES
+    "${ENGINE_GL_PRIVATE_DIR}/assets/mesh/Sphere.cpp"
     ${ENGINE_SOURCES}
 )
 

@@ -19,6 +19,11 @@
 #include <core/objects/Planet.hpp>
 #endif /// !ORBIT_CORE_PLANET_HPP
 
+// Include orbit::core::RenderSystem
+#ifndef ORBIT_CORE_RENDER_SYSTEM_HPP
+#include <orbit/core/render/RenderSystem.hpp>
+#endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
+
 #ifdef ORBIT_DEBUG // DEBUG
 
 #ifndef ORBIT_CORE_DEBUG_HPP
@@ -45,7 +50,8 @@ namespace orbit
 
         Planet::Planet()
             : GameObject(),
-            mMaterial(nullptr)
+            mMaterial(nullptr),
+            mSphereMesh(nullptr)
         {
 #ifdef ORBIT_DEBUG // DEBUG
             orbit_Log::debug("Planet::construct");
@@ -68,6 +74,12 @@ namespace orbit
 #ifdef ORBIT_DEBUG // DEBUG
             orbit_Log::debug("Planet::onLoad");
 #endif // DEBUG
+
+            // Get RenderSystem
+            std::shared_ptr<orbit_Renderer> renderSystem(orbit_Renderer::getInstance());
+
+            // @TODO: Load Mesh
+            mSphereMesh = renderSystem->createSphere3D();
 
             return GameObject::onLoad();
         }

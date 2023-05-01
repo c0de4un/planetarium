@@ -24,6 +24,11 @@
 #include <orbit/core/assets/materials/Material.hpp>
 #endif /// !ORBIT_CORE_MATERIAL_HPP
 
+// Include orbit::gl::Sphere
+#ifndef ORBIT_GL_SPHERE_HPP
+#include <orbit/gl/assets/mesh/Sphere.hpp>
+#endif /// !ORBIT_GL_SPHERE_HPP
+
 // DEBUG
 #ifdef ORBIT_DEBUG
 
@@ -101,6 +106,15 @@ namespace orbit
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.IMeshFactory
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        std::shared_ptr<orbit_IMesh> GLRenderer::createSphere3D()
+        {
+            return std::static_pointer_cast<orbit_IMesh, orbit_Sphere>( std::make_shared<orbit_Sphere>(10.0f, 36, 18) );
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.IRenderer
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -113,19 +127,6 @@ namespace orbit
         {
             // @TODO: GLRenderer::createShader()
             return std::shared_ptr<orbit_Shader>(nullptr);
-        }
-
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // METHODS.IMeshFactory
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        std::shared_ptr<orbit_IMesh> GLRenderer::createSphere3D()
-        {
-            std::shared_ptr<orbit_IMesh> result(nullptr);
-
-            // @TODO: GLRenderer::createSphere3D()
-
-            return result;
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

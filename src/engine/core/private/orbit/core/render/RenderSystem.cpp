@@ -112,6 +112,19 @@ namespace orbit
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.IMeshFactory
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        std::shared_ptr<orbit_IMesh> RenderSystem::createSphere3D()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            throw new std::exception("RenderSystem::createSphere3D: not implemented");
+#endif // DEBUG
+
+            return std::shared_ptr<orbit_IMesh>(nullptr);
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.RenderSystem
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

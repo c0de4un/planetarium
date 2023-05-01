@@ -8,8 +8,8 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_GL_RENDERER_HPP
-#define ORBIT_GL_RENDERER_HPP
+#ifndef ORBIT_GL_SPHERE_HPP
+#define ORBIT_GL_SPHERE_HPP
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -17,20 +17,18 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::core::RenderSystem
-#ifndef ORBIT_CORE_RENDER_SYSTEM_HPP
-#include <orbit/core/render/RenderSystem.hpp>
-#endif /// !ORBIT_CORE_RENDER_SYSTEM_HPP
-
-// Include orbit::core::IMeshFactory
-#ifndef ORBIT_CORE_I_MESH_FACTORY_HXX
-#include <orbit/core/mesh/IMeshFactory.hxx>
-#endif /// !ORBIT_CORE_I_MESH_FACTORY_HXX
+// Include orbit::core::IMesh
+#ifndef ORBIT_CORE_I_MESH_HXX
+#include <orbit/core/mesh/IMesh.hxx>
+#endif /// !ORBIT_CORE_I_MESH_HXX
 
 // Include orbit::gl
 #ifndef ORBIT_GL_HPP
 #include <orbit/gl/config/orbit_gl.hpp>
 #endif /// !ORBIT_GL_HPP
+
+// Include STL vector
+#include <vector>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -45,10 +43,10 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // GLRenderer
+        // Sphere
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class GLRenderer final : public orbit_Renderer
+        class Sphere final : public orbit_IMesh
         {
 
         private:
@@ -59,39 +57,22 @@ namespace orbit
             // FIELDS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            bool mFirstFrame;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // GETTERS & SETTERS
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            std::vector<float> sphere_vertices;
+            std::vector<float> sphere_texcoord;
+            std::vector<int> sphere_indices;
+            GLuint VBO, VAO, EBO;
+            float radius = 1.0f;
+            int sectorCount = 36;
+            int stackCount = 18;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            GLRenderer(const GLRenderer&)            = delete;
-            GLRenderer& operator=(const GLRenderer&) = delete;
-            GLRenderer(GLRenderer&&)                 = delete;
-            GLRenderer& operator=(GLRenderer&&)      = delete;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-        protected:
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS.System
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            virtual bool onStart() final;
-            virtual bool onResume() final;
-            virtual bool onPause() final;
-            virtual void onStop() final;
+            Sphere(const Sphere&)            = delete;
+            Sphere& operator=(const Sphere&) = delete;
+            Sphere(Sphere&&)                 = delete;
+            Sphere& operator=(Sphere&&)      = delete;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -103,49 +84,34 @@ namespace orbit
             // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            explicit GLRenderer();
+            explicit Sphere(const float in_radius, const int sectors, const int stacks);
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~GLRenderer() noexcept;
+            virtual ~Sphere() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS.IMeshFactory
+            // GETTERS & SETTERS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual std::shared_ptr<orbit_IMesh> createSphere3D() final;
-
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS.IRenderer
+            // METHODS.IMesh
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            virtual std::shared_ptr<orbit_Material> createMaterial() final;
-
-            virtual std::shared_ptr<orbit_Shader> createShader(const unsigned char shaderType, const std::string sourceFile) final;
-
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // METHODS.GLRenderer
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            /**
-            * @thread_safety - called only from render-thread
-            **/
-            void Draw();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        }; /// orbit::gl::GLRenderer
+        };
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    } /// orbit::gl
+    }
 
-} /// orbit
+}
 
-using orbit_GLRenderer = orbit::gl::GLRenderer;
+using orbit_Sphere = orbit::gl::Sphere;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_GL_RENDERER_HPP
+#endif /// !ORBIT_GL_SPHERE_HPP

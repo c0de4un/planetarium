@@ -25,6 +25,16 @@
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 
+// Include STL math
+#define _USE_MATH_DEFINES
+#include <math.h>
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// ALIASES & DEFINES
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+#define TAU (M_PI * 2.0)
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 #endif /// !ORBIT_GL_HPP

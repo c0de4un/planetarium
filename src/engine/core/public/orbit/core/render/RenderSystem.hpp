@@ -27,6 +27,11 @@
 #include <orbit/core/render/IRenderer.hxx>
 #endif /// !ORBIT_CORE_I_RENDERER_HXX
 
+// Include orbit::core::IMeshFactory
+#ifndef ORBIT_CORE_I_MESH_FACTORY_HXX
+#include <orbit/core/mesh/IMeshFactory.hxx>
+#endif /// !ORBIT_CORE_I_MESH_FACTORY_HXX
+
 // Include STL vector
 #include <vector>
 
@@ -49,7 +54,7 @@ namespace orbit
         // RenderSystem
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class RenderSystem : public System, public IRenderer
+        class RenderSystem : public System, public IRenderer, public orbit_IMeshFactory
         {
 
         protected:
@@ -112,6 +117,12 @@ namespace orbit
 
             static std::shared_ptr<RenderSystem> getInstance();
             static bool isInitialized() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.IMeshFactory
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual std::shared_ptr<orbit_IMesh> createSphere3D() override;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.RenderSystem
