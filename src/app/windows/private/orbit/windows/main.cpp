@@ -31,8 +31,8 @@ void Start()
 #endif // DEBUG
 
     // Guarded-Block
-    try
-    {
+    //try
+    //{
         // Initialize AssetsManager
         orbit_Assets::Initialize( std::make_shared<orbit_Assets>() );
 
@@ -62,22 +62,22 @@ void Start()
 
         // Enter render loop
         winGraphics->Loop();
-    }
-#ifdef ORBIT_DEBUG // DEBUG
-    catch(const std::exception& exception_ref)
-    {
-        std::string logMsg("main::Start: ");
-        logMsg += exception_ref.what();
-        orbit_Log::error(logMsg.c_str());
-    }
-#endif // DEBUG
-    catch (...)
-    {
-#ifdef ORBIT_DEBUG // DEBUG
-        std::string logMsg("main::Start: unknown error");
-        orbit_Log::error(logMsg.c_str());
-#endif // DEBUG
-    }
+//    }
+//#ifdef ORBIT_DEBUG // DEBUG
+//    catch(const std::exception& exception_ref)
+//    {
+//        std::string logMsg("main::Start: ");
+//        logMsg += exception_ref.what();
+//        orbit_Log::error(logMsg.c_str());
+//    }
+//#endif // DEBUG
+//    catch (...)
+//    {
+//#ifdef ORBIT_DEBUG // DEBUG
+//        std::string logMsg("main::Start: unknown error");
+//        orbit_Log::error(logMsg.c_str());
+//#endif // DEBUG
+//    }
 }
 
 void Stop()

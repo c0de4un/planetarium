@@ -130,8 +130,8 @@ namespace orbit
         bool GameObject::attachObject(object_ptr pChild)
         {
 #ifdef ORBIT_DEBUG // DEBUG
-            assert( static_cast<bool>( pChild.get() ) && "");
-            assert( pChild->isAttached() && "GameObject::attachObject: already attached");
+            assert(static_cast<bool>( pChild.get() ) && "GameObject::attachObject: nullptr");
+            assert(!pChild->isAttached() && "GameObject::attachObject: already attached");
 #else
             if ( pChild.get() )
                 return false;
@@ -144,16 +144,19 @@ namespace orbit
 
             const size_t childrenCount( mChildren.size() );
             size_t iter(0);
-            while (iter != (childrenCount - 1))
+            if (childrenCount)
             {
-                object_ptr &object_ptr(mChildren.at(iter));
-                if (!object_ptr.get())
+                while (iter < (childrenCount - 1))
                 {
-                    object_ptr = pChild;
-                    return true;
-                }
+                    object_ptr &object_ptr(mChildren.at(iter));
+                    if (!object_ptr.get())
+                    {
+                        object_ptr = pChild;
+                        return true;
+                    }
 
-                iter++;
+                    iter++;
+                }
             }
 
             mChildren.push_back(pChild);
