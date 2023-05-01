@@ -22,6 +22,11 @@
 #include <orbit/core/object/GameObject.hpp>
 #endif /// !ORBIT_CORE_GAME_OBJECT_HPP
 
+// Include orbit::core::Material
+#ifndef ORBIT_CORE_MATERIAL_HPP
+#include <orbit/core/assets/materials/Material.hpp>
+#endif /// !ORBIT_CORE_MATERIAL_HPP
+
 #ifdef ORBIT_DEBUG // DEBUG
 
 // Inlcude orbig::debug
@@ -53,6 +58,12 @@ namespace orbit
         private:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // FIELDS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            std::shared_ptr<orbit_Material> mMaterial;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
@@ -93,6 +104,12 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             virtual ~Planet() noexcept;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // GETTERS & SETTERS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            void setMaterial(std::shared_ptr<orbit_Material> mat);
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

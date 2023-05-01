@@ -44,7 +44,8 @@ namespace orbit
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         Planet::Planet()
-            : GameObject()
+            : GameObject(),
+            mMaterial(nullptr)
         {
 #ifdef ORBIT_DEBUG // DEBUG
             orbit_Log::debug("Planet::construct");
@@ -78,6 +79,17 @@ namespace orbit
 #endif // DEBUG
 
             GameObject::onUnload();
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // GETTERS & SETTERS
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        void Planet::setMaterial(std::shared_ptr<orbit_Material> mat)
+        {
+            mMaterial = mat; // Copy
+
+            attachAsset( std::static_pointer_cast<orbit_Asset, orbit_Material>(mMaterial) );
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

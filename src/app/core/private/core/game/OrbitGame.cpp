@@ -108,13 +108,10 @@ namespace orbit
             std::shared_ptr<orbit_Planet> planet( std::make_shared<orbit_Planet>() );
 
             // @TODO: Attach Assets to Planet
-            planet->attachAsset( std::static_pointer_cast<orbit_Asset, orbit_Material>(planetMaterial) );
+            planet->setMaterial(planetMaterial);
 
             // @TODO: Attach Planet to Scene
             scene->attachObject( std::static_pointer_cast<orbit_GameObject, orbit_Planet>(planet) );
-
-            // @TODO: Set Planet Material
-            //planet->setMaterial(planetMaterial);
 
             // Load Scene and attached Objects
             if (!scene->Load())
