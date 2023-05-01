@@ -166,22 +166,22 @@ namespace orbit
             }
         }
 
-        std::shared_ptr<orbit_IMaterial> RenderSystem::createMaterial()
+        std::shared_ptr<orbit_Material> RenderSystem::createMaterial()
         {
 #ifdef ORBIT_DEBUG // DEBUG
             throw new std::exception("RenderSystem::createMaterial: not implemented");
 #endif // DEBUG
 
-            return std::shared_ptr<orbit_IMaterial>(nullptr);
+            return std::shared_ptr<orbit_Material>(nullptr);
         }
 
-        std::shared_ptr<orbit_IShader> RenderSystem::createShader(const unsigned char shaderType, const std::string sourceFile)
+        std::shared_ptr<orbit_Shader> RenderSystem::createShader(const unsigned char shaderType, const std::string sourceFile)
         {
 #ifdef ORBIT_DEBUG // DEBUG
             throw new std::exception("RenderSystem::createShader: not implemented");
 #endif // DEBUG
 
-            return std::shared_ptr<orbit_IShader>(nullptr);
+            return std::shared_ptr<orbit_Shader>(nullptr);
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

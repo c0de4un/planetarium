@@ -27,6 +27,11 @@
 #include <orbit/core/object/ILoadable.hxx>
 #endif /// !ORBIT_CORE_I_LOADABLE_HXX
 
+// Include orbit::core::Asset
+#ifndef ORBIT_CORE_ASSET_HPP
+#include <orbit/core/assets/Asset.hpp>
+#endif /// !ORBIT_CORE_ASSET_HPP
+
 // Include STL atomic
 #include <atomic>
 
@@ -89,6 +94,9 @@ namespace orbit
             std::vector<object_ptr> mChildren;
             GameObject*             mParent;
 
+            mutable std::mutex                         mAssetsMutex;
+            std::vector<std::shared_ptr<orbit_Asset>> mAssets;
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -100,6 +108,8 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             std::shared_ptr<GameObject> getNextChild(const size_t iter) const;
+
+            std::shared_ptr<orbit_Asset> getNextAsset(const size_t iter) const;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.GameObject
@@ -152,6 +162,9 @@ namespace orbit
             virtual bool attachObject(GameObject* const pChild);
 
             virtual void detachObject(GameObject* pChild);
+
+            virtual void attachAsset(std::shared_ptr<orbit_Asset> pAsset);
+            virtual void detachAsset(orbit_Asset* const pAsset);
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

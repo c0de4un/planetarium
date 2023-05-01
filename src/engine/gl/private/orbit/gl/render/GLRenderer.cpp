@@ -104,15 +104,15 @@ namespace orbit
         // METHODS.IRenderer
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        std::shared_ptr<orbit_IMaterial> GLRenderer::createMaterial()
+        std::shared_ptr<orbit_Material> GLRenderer::createMaterial()
         {
-            return std::static_pointer_cast<orbit_IMaterial, orbit_Material>( std::make_shared<orbit_Material>() );
+            return std::make_shared<orbit_Material>();
         }
 
-        std::shared_ptr<orbit_IShader> GLRenderer::createShader(const unsigned char shaderType, const std::string sourceFile)
+        std::shared_ptr<orbit_Shader> GLRenderer::createShader(const unsigned char shaderType, const std::string sourceFile)
         {
             // @TODO: GLRenderer::createShader()
-            return std::shared_ptr<orbit_IShader>(nullptr);
+            return std::shared_ptr<orbit_Shader>(nullptr);
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

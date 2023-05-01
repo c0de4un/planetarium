@@ -127,9 +127,9 @@ namespace orbit
             virtual void addListener(std::shared_ptr<orbit_IRenderListener> pListener)    final;
             virtual void removeListener(std::shared_ptr<orbit_IRenderListener> pListener) final;
 
-            virtual std::shared_ptr<orbit_IMaterial> createMaterial() override;
+            virtual std::shared_ptr<orbit_Material> createMaterial() override;
 
-            virtual std::shared_ptr<orbit_IShader> createShader(const unsigned char shaderType, const std::string sourceFile) override;
+            virtual std::shared_ptr<orbit_Shader> createShader(const unsigned char shaderType, const std::string sourceFile) override;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

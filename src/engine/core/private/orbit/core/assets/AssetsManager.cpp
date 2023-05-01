@@ -91,7 +91,7 @@ namespace orbit
             mInstance.reset();
         }
 
-        std::shared_ptr<orbit_IMaterial> AssetsManager::createMaterial()
+        std::shared_ptr<orbit_Material> AssetsManager::createMaterial()
         {
             std::shared_ptr<orbit_IRenderer> renderSystem( orbit_RenderSystemProvider::getRenderer() );
 
@@ -99,13 +99,13 @@ namespace orbit
             assert(renderSystem.get() && "AssetsManager::createMaterial: Render system not initialized");
 #else // !DEBUG
             if (!renderSystem.get())
-                return std::shared_ptr<orbit_IMaterial>(nullptr);
+                return std::shared_ptr<orbit_Material>(nullptr);
 #endif // DEBUG
 
             return renderSystem->createMaterial();
         }
 
-        std::shared_ptr<orbit_IShader> AssetsManager::createShader(const unsigned char shaderType, const std::string sourceFile)
+        std::shared_ptr<orbit_Shader> AssetsManager::createShader(const unsigned char shaderType, const std::string sourceFile)
         {
             std::shared_ptr<orbit_IRenderer> renderSystem( orbit_RenderSystemProvider::getRenderer() );
 
@@ -113,7 +113,7 @@ namespace orbit
             assert(renderSystem.get() && "AssetsManager::createShader: Render system not initialized");
 #else // !DEBUG
             if (!renderSystem.get())
-                return std::shared_ptr<orbit_IShader>(nullptr);
+                return std::shared_ptr<orbit_Shader>(nullptr);
 #endif // DEBUG
 
             return renderSystem->createShader(shaderType, sourceFile);

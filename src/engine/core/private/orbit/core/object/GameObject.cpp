@@ -50,7 +50,9 @@ namespace orbit
             mLoaded(false),
             mChildrenMutex(),
             mChildren(),
-            mParent(nullptr)
+            mParent(nullptr),
+            mAssetsMutex(),
+            mAssets()
         {
         }
 
@@ -83,6 +85,16 @@ namespace orbit
                 return std::shared_ptr<GameObject>(nullptr);
 
             return mChildren.at(iter);
+        }
+
+        std::shared_ptr<orbit_Asset> GameObject::getNextAsset(const size_t iter) const
+        {
+            std::unique_lock<std::mutex> lock( mAssetsMutex );
+
+            if (mAssets.empty() || mAssets.size() < (iter - 1))
+                return std::shared_ptr<orbit_Asset>(nullptr);
+
+            return mAssets.at(iter);
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -173,6 +185,36 @@ namespace orbit
             }
         }
 
+        void GameObject::attachAsset(std::shared_ptr<orbit_Asset> pAsset)
+        {
+            std::unique_lock<std::mutex> lock( mAssetsMutex );
+
+            pAsset->addUser();
+
+            mAssets.push_back(pAsset);
+        }
+
+        void GameObject::detachAsset(orbit_Asset* const pAsset)
+        {
+            std::unique_lock<std::mutex> lock( mAssetsMutex );
+
+            const size_t assetsCount(mAssets.size());
+            for (size_t i = 0; i < assetsCount; i++)
+            {
+                std::shared_ptr<orbit_Asset> &attachedAsset_ref(mAssets[i]);
+                if (!attachedAsset_ref.get())
+                    continue;
+
+                if (attachedAsset_ref.get() == pAsset)
+                {
+                    pAsset->removeUser();
+                    pAsset->Unload();
+                    attachedAsset_ref.reset();
+                    break;
+                }
+            }
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.ILoadable
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -182,8 +224,25 @@ namespace orbit
             if (isLoaded())
                 return true;
 
-            // Load children
+            // Load Assets
             size_t iter(0);
+            std::shared_ptr<orbit_Asset> asset(nullptr);
+            while (asset = getNextAsset(iter))
+            {
+                if (!asset->Load())
+                {
+                    if (!asset.get())
+                        continue;
+
+#ifdef ORBIT_DEBUG // DEBUG
+                    orbit_Log::error("GameObject::Load: failed to load asset");
+#endif // DEBUG
+                    return false;
+                }
+            }
+
+            // Load children
+            iter = 0;
             std::shared_ptr<GameObject> child(nullptr);
             while (child = getNextChild(iter))
             {
@@ -208,8 +267,19 @@ namespace orbit
             if (!isLoaded())
                 return;
 
-            // Load children
+            // Unload Assets
             size_t iter(0);
+            std::shared_ptr<orbit_Asset> asset(nullptr);
+            while (asset = getNextAsset(iter))
+            {
+                if (!asset.get())
+                    continue;
+
+                asset->Unload();
+            }
+
+            // Unload children
+            iter = 0;
             std::shared_ptr<GameObject> child(nullptr);
             while (child = getNextChild(iter))
             {

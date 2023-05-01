@@ -88,7 +88,7 @@ namespace orbit
             std::shared_ptr<orbit_Assets> assetsManager( orbit_Assets::getInstance() );
 
             // @TODO: Create Material
-            std::shared_ptr<orbit_IMaterial> planetMaterial( assetsManager->createMaterial() );
+            std::shared_ptr<orbit_Material> planetMaterial( assetsManager->createMaterial() );
 
             // @TODO: Load VertexShader
             std::shared_ptr<orbit_IShader> vertexShader( assetsManager->createShader(orbit_EShaderTypes::SHADER_TYPE_VERTEX, std::string("assets/shaders/vertex.glsl")) );
@@ -108,6 +108,7 @@ namespace orbit
             std::shared_ptr<orbit_Planet> planet( std::make_shared<orbit_Planet>() );
 
             // @TODO: Attach Assets to Planet
+            planet->attachAsset( std::static_pointer_cast<orbit_Asset, orbit_Material>(planetMaterial) );
 
             // @TODO: Attach Planet to Scene
             scene->attachObject( std::static_pointer_cast<orbit_GameObject, orbit_Planet>(planet) );

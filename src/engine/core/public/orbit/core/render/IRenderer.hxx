@@ -22,15 +22,15 @@
 #include <orbit/core/render/IRenderListener.hxx>
 #endif /// !ORBIT_CORE_I_RENDER_LSITENER_HXX
 
-// Include orbit::core::IMaterial
-#ifndef ORBIT_CORE_I_MATERIAL_HXX
-#include <orbit/core/assets/materials/IMaterial.hxx>
-#endif /// !ORBIT_CORE_I_MATERIAL_HXX
+// Include orbit::core::Material
+#ifndef ORBIT_CORE_MATERIAL_HPP
+#include <orbit/core/assets/materials/Material.hpp>
+#endif /// !ORBIT_CORE_MATERIAL_HPP
 
-// Include orbit::core::IShader
-#ifndef ORBIT_CORE_I_SHADER_HXX
-#include <orbit/core/assets/shaders/IShader.hxx>
-#endif /// !ORBIT_CORE_I_SHADER_HXX
+// Include orbit::core::Shader
+#ifndef ORBIT_CORE_SHADER_HPP
+#include <orbit/core/assets/shaders/Shader.hpp>
+#endif /// !ORBIT_CORE_SHADER_HPP
 
 // Include STL memory
 #include <memory>
@@ -74,9 +74,9 @@ namespace orbit
             virtual void addListener(std::shared_ptr<orbit_IRenderListener> pListener)    = 0;
             virtual void removeListener(std::shared_ptr<orbit_IRenderListener> pListener) = 0;
 
-            virtual std::shared_ptr<orbit_IMaterial> createMaterial() = 0;
+            virtual std::shared_ptr<orbit_Material> createMaterial() = 0;
 
-            virtual std::shared_ptr<orbit_IShader> createShader(const unsigned char shaderType, const std::string sourceFile) = 0;
+            virtual std::shared_ptr<orbit_Shader> createShader(const unsigned char shaderType, const std::string sourceFile) = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
