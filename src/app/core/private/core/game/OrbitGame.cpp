@@ -29,6 +29,11 @@
 #include <orbit/core/assets/AssetsManager.hpp>
 #endif /// !ORBIT_CORE_ASSETS_MANAGER_HPP
 
+// Include Planet
+#ifndef ORBIT_CORE_PLANET_HPP
+#include <core/objects/Planet.hpp>
+#endif /// !ORBIT_CORE_PLANET_HPP
+
 #ifdef ORBIT_DEBUG /// DEBUG
 
 #ifndef ORBIT_CORE_DEBUG_HPP
@@ -99,12 +104,13 @@ namespace orbit
             // @TODO: Load Texture2D
             //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_TEXTURE_2D, planetDiffuseTexture2D);
 
-            // @TODO: Create Planet
-            //std::shared_ptr<Planet> planet( std::make_shared<Planet>() );
-            //std::shared_ptr<orbit_GameObject> planet_gameObject( std::static_pointer_cast<orbit_GameObject, Planet>(planet) );
+            // Create Planet
+            std::shared_ptr<orbit_Planet> planet( std::make_shared<orbit_Planet>() );
+
+            // @TODO: Attach Assets to Planet
 
             // @TODO: Attach Planet to Scene
-            //scene->attachObject(planet_gameObject);
+            scene->attachObject( std::static_pointer_cast<orbit_GameObject, orbit_Planet>(planet) );
 
             // @TODO: Set Planet Material
             //planet->setMaterial(planetMaterial);

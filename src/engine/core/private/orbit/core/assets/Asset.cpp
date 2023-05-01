@@ -42,7 +42,10 @@ namespace orbit
         {
         }
 
-        Asset::~Asset() noexcept = default;
+        Asset::~Asset() noexcept
+        {
+            Unload();
+        }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // GETTERS & SETTERS

@@ -16,6 +16,8 @@ set( APP_CORE_PUBLIC_INCLUDE_DIR "${APP_CORE_DIR}/public" )
 set(APP_HEADERS
     # GAME
     "${APP_CORE_PUBLIC_DIR}game/OrbitGame.hpp"
+    # OBJECTS
+    "${APP_CORE_PUBLIC_DIR}objects/Planet.hpp"
     ${APP_HEADERS}
 )
 
@@ -26,6 +28,8 @@ set(APP_HEADERS
 set(APP_SOURCES
     # GAME
     "${APP_CORE_PRIVATE_DIR}game/OrbitGame.cpp"
+    # OBJECTS
+    "${APP_CORE_PRIVATE_DIR}objects/Planet.cpp"
     ${APP_SOURCES}
 )
 
