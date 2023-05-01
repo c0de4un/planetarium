@@ -118,6 +118,9 @@ namespace orbit
             virtual bool onAttaching(GameObject* const parent);
             virtual void onDetaching();
 
+            virtual bool onLoad();
+            virtual void onUnload();
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

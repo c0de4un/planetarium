@@ -59,8 +59,26 @@ namespace orbit
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        //
+        // METHODS.GameObject
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        bool Planet::onLoad()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::debug("Planet::onLoad");
+#endif // DEBUG
+
+            return GameObject::onLoad();
+        }
+
+        void Planet::onUnload()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            orbit_Log::debug("Planet::onUnload");
+#endif // DEBUG
+
+            GameObject::onUnload();
+        }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

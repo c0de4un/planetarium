@@ -66,21 +66,33 @@ namespace orbit
 
         void Log::info(const char* const msg) noexcept
         {
+            if (!mLogger)
+                return;
+
             mLogger->printInfo(msg);
         }
 
         void Log::debug(const char* const msg) noexcept
         {
+            if (!mLogger)
+                return;
+
             mLogger->printDebug(msg);
         }
 
         void Log::warning(const char* const msg) noexcept
         {
+            if (!mLogger)
+                return;
+
             mLogger->printWarning(msg);
         }
 
         void Log::error(const char* const msg) noexcept
         {
+            if (!mLogger)
+                return;
+
             mLogger->printError(msg);
         }
 

@@ -81,7 +81,8 @@ namespace orbit
         {
             std::unique_lock<std::mutex> lock( mChildrenMutex );
 
-            if (mChildren.empty() || mChildren.size() < (iter - 1))
+            const size_t childrenCount(mChildren.size());
+            if (!childrenCount || childrenCount <= iter)
                 return std::shared_ptr<GameObject>(nullptr);
 
             return mChildren.at(iter);
@@ -91,7 +92,8 @@ namespace orbit
         {
             std::unique_lock<std::mutex> lock( mAssetsMutex );
 
-            if (mAssets.empty() || mAssets.size() < (iter - 1))
+            const size_t assetsCount(mAssets.size());
+            if (!assetsCount || assetsCount <= iter)
                 return std::shared_ptr<orbit_Asset>(nullptr);
 
             return mAssets.at(iter);
@@ -218,6 +220,15 @@ namespace orbit
             }
         }
 
+        bool GameObject::onLoad()
+        {
+            return true;
+        }
+
+        void GameObject::onUnload()
+        {
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.ILoadable
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -242,6 +253,8 @@ namespace orbit
 #endif // DEBUG
                     return false;
                 }
+
+                iter++;
             }
 
             // Load children
@@ -259,6 +272,9 @@ namespace orbit
 
                 iter++;
             }
+
+            if (!onLoad())
+                return false;
 
             mLoaded = true;
 
@@ -279,6 +295,8 @@ namespace orbit
                     continue;
 
                 asset->Unload();
+
+                iter++;
             }
 
             // Unload children
@@ -290,6 +308,8 @@ namespace orbit
 
                 iter++;
             }
+
+            onUnload();
 
             mLoaded = false;
         }
