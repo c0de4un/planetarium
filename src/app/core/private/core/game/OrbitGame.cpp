@@ -24,10 +24,10 @@
 #include <orbit/core/scene/Scene3D.hpp>
 #endif /// !ORBIT_CORE_SCENE_3D_HPP
 
-// Include orbit::core::IMaterial
-#ifndef ORBIT_CORE_I_MATERIAL_HXX
-#include <orbit/core/assets/materials/IMaterial.hxx>
-#endif /// !ORBIT_CORE_I_MATERIAL_HXX
+// Include orbit::core::AssetsManager
+#ifndef ORBIT_CORE_ASSETS_MANAGER_HPP
+#include <orbit/core/assets/AssetsManager.hpp>
+#endif /// !ORBIT_CORE_ASSETS_MANAGER_HPP
 
 #ifdef ORBIT_DEBUG /// DEBUG
 
@@ -79,8 +79,11 @@ namespace orbit
             std::shared_ptr<orbit_Scene3D> scene( std::make_shared<orbit_Scene3D>() );
             mScene3D = std::static_pointer_cast<orbit_IScene, orbit_Scene3D>( scene );
 
+            // Get AssetsManager
+            std::shared_ptr<orbit_Assets> assetsManager( orbit_Assets::getInstance() );
+
             // @TODO: Create Material
-            //std::shared_ptr<orbit_IMaterial> planetMaterial( orbit_Assets::createMaterial() );
+            std::shared_ptr<orbit_IMaterial> planetMaterial( assetsManager->createMaterial() );
 
             // @TODO: Load VertexShader
             //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_VERTEX_SHADER, vertexShader);

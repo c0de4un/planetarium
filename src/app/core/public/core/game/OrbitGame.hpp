@@ -27,11 +27,6 @@
 #include <orbit/core/camera/Camera3D.hpp>
 #endif /// !ORBIT_CORE_CAMERA_3D_HPP
 
-// Include orbit::core::IScene
-#ifndef ORBIT_CORE_I_SCENE_HXX
-#include <orbit/core/scene/IScene.hxx>
-#endif /// !ORBIT_CORE_I_SCENE_HXX
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
