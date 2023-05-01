@@ -105,6 +105,20 @@ namespace orbit
             return renderSystem->createMaterial();
         }
 
+        std::shared_ptr<orbit_IShader> AssetsManager::createShader(const unsigned char shaderType, const std::string sourceFile)
+        {
+            std::shared_ptr<orbit_IRenderer> renderSystem( orbit_RenderSystemProvider::getRenderer() );
+
+#ifdef ORBIT_DEBUT // DEBUG
+            assert(renderSystem.get() && "AssetsManager::createShader: Render system not initialized");
+#else // !DEBUG
+            if (!renderSystem.get())
+                return std::shared_ptr<orbit_IShader>(nullptr);
+#endif // DEBUG
+
+            return renderSystem->createShader(shaderType, sourceFile);
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     }

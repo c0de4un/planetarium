@@ -86,10 +86,15 @@ namespace orbit
             std::shared_ptr<orbit_IMaterial> planetMaterial( assetsManager->createMaterial() );
 
             // @TODO: Load VertexShader
+            std::shared_ptr<orbit_IShader> vertexShader( assetsManager->createShader(orbit_EShaderTypes::SHADER_TYPE_VERTEX, std::string("assets/shaders/vertex.glsl")) );
+
+            planetMaterial->attachSlot( orbit_EMaterialSlots::MATERIAL_SLOT_VERTEX_SHADER, std::static_pointer_cast<orbit_IMaterialSlot, orbit_IShader>(vertexShader) );
             //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_VERTEX_SHADER, vertexShader);
 
             // @TODO: Load Fragment Shader
             //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_FRAGMENT_SHADER, fragmentShader);
+
+            // @TODO: Load Geometry Shader
 
             // @TODO: Load Texture2D
             //planetMaterial->attachSlot(EMaterialSlots::MATERIAL_SLOT_TEXTURE_2D, planetDiffuseTexture2D);

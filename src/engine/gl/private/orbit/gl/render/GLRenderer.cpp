@@ -109,6 +109,12 @@ namespace orbit
             return std::static_pointer_cast<orbit_IMaterial, orbit_Material>( std::make_shared<orbit_Material>() );
         }
 
+        std::shared_ptr<orbit_IShader> GLRenderer::createShader(const unsigned char shaderType, const std::string sourceFile)
+        {
+            // @TODO: GLRenderer::createShader()
+            return std::shared_ptr<orbit_IShader>(nullptr);
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.IMeshFactory
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -8,8 +8,8 @@
  * SOFTWARE.
 **/
 
-#ifndef ORBIT_CORE_I_SHADER_HXX
-#define ORBIT_CORE_I_SHADER_HXX
+#ifndef ORBIT_GL_SHADER_HPP
+#define ORBIT_GL_SHADER_HPP
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -17,13 +17,15 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Include orbit::core::EShaderTypes
-#include <orbit/core/assets/shaders/EShaderTypes.hpp>
+// Include orbit::core::Shader
+#ifndef ORBIT_CORE_SHADER_HPP
+#include <orbit/core/assets/shaders/Shader.hpp>
+#endif /// !ORBIT_CORE_SHADER_HPP
 
-// Include orbit::core::IMaterialSlot
-#ifndef ORBIT_CORE_I_MATERIAL_SLOT_HXX
-#include <orbit/core/assets/materials/IMaterialSlot.hxx>
-#endif /// !ORBIT_CORE_I_MATERIAL_SLOT_HXX
+// Include orbit::gl
+#ifndef ORBIT_GL_HPP
+#include <orbit/gl/config/orbit_gl.hpp>
+#endif /// !ORBIT_GL_HPP
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -32,33 +34,64 @@
 namespace orbit
 {
 
-    namespace core
+    namespace gl
     {
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // IShader
+        // GLShader
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class IShader : public orbit_IMaterialSlot
+        class GLShader final : public orbit_Shader
         {
+
+        private:
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // FIELDS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            GLint mGL_ID;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // DELETED
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            GLShader(const GLShader&)            = delete;
+            GLShader& operator=(const GLShader&) = delete;
+            GLShader(GLShader&&)                 = delete;
+            GLShader& operator=(GLShader&&)      = delete;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        protected:
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.Asset
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         public:
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // DESTRUCTOR
+            // CONSTRUCTOR & DESTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            virtual ~IShader() noexcept = default;
+            explicit GLShader(const unsigned char shaderType, const std::string sourceFile);
+
+            virtual ~GLShader() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // GETTERS & SETTERS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-            virtual unsigned char getShaderType() const noexcept = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -70,9 +103,8 @@ namespace orbit
 
 }
 
-using orbit_IShader = orbit::core::IShader;
-#define ORBIT_CORE_I_SHADER_DECL
+using orbit_GLShader = orbit::gl::GLShader;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-#endif /// !ORBIT_CORE_I_SHADER_HXX
+#endif /// !ORBIT_GL_SHADER_HPP

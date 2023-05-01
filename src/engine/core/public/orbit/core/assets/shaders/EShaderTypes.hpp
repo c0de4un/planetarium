@@ -39,6 +39,8 @@ namespace orbit
 
             SHADER_TYPE_FRAGMENT = 1,
             SHADER_TYPE_VERTEX   = 2,
+            SHADER_TYPE_GEOMETRY = 3,
+            SHADER_TYPE_PROGRAM  = 4,
             SHADER_TYPE_MAX      = 99
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -50,5 +52,7 @@ namespace orbit
     }
 
 }
+
+using orbit_EShaderTypes = orbit::core::EShaderTypes;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

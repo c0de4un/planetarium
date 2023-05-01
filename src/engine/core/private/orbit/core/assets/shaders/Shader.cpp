@@ -35,10 +35,12 @@ namespace orbit
         // CONSTRUCTOR & DESTRUCTOR
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        Shader::Shader(const unsigned char shaderType)
+        Shader::Shader(const unsigned char shaderType, const std::string sourceFile)
             :
             Asset(),
-            mShaderType(shaderType)
+            mMaterialSlotType(getMaterialSlotType(shaderType)),
+            mShaderType(shaderType),
+            mSourceFile(sourceFile) // Copy
         {
         }
 
@@ -48,9 +50,31 @@ namespace orbit
         // GETTERS & SETTERS
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+        unsigned char Shader::getMaterialSlotType(const unsigned shaderType) noexcept
+        {
+            switch (shaderType)
+            {
+                case orbit_EShaderTypes::SHADER_TYPE_VERTEX:
+                    return orbit_EMaterialSlots::MATERIAL_SLOT_VERTEX_SHADER;
+
+                case orbit_EShaderTypes::SHADER_TYPE_FRAGMENT:
+                    return orbit_EMaterialSlots::MATERIAL_SLOT_FRAGMENT_SHADER;
+
+                case orbit_EShaderTypes::SHADER_TYPE_GEOMETRY:
+                    return orbit_EMaterialSlots::MATERIAL_SLOT_GEOMETRY_SHADER;
+            }
+
+            return orbit_EMaterialSlots::MATERIAL_SLOT_VERTEX_SHADER;
+        }
+
         unsigned char Shader::getShaderType() const noexcept
         {
             return mShaderType;
+        }
+
+        unsigned char Shader::getSlotType() const noexcept
+        {
+            return mMaterialSlotType;
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

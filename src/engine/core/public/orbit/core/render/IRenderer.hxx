@@ -27,8 +27,16 @@
 #include <orbit/core/assets/materials/IMaterial.hxx>
 #endif /// !ORBIT_CORE_I_MATERIAL_HXX
 
+// Include orbit::core::IShader
+#ifndef ORBIT_CORE_I_SHADER_HXX
+#include <orbit/core/assets/shaders/IShader.hxx>
+#endif /// !ORBIT_CORE_I_SHADER_HXX
+
 // Include STL memory
 #include <memory>
+
+// Include STL string
+#include <string>
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -67,6 +75,8 @@ namespace orbit
             virtual void removeListener(std::shared_ptr<orbit_IRenderListener> pListener) = 0;
 
             virtual std::shared_ptr<orbit_IMaterial> createMaterial() = 0;
+
+            virtual std::shared_ptr<orbit_IShader> createShader(const unsigned char shaderType, const std::string sourceFile) = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

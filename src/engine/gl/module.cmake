@@ -28,6 +28,8 @@ set( ENGINE_HEADERS
     "${ENGINE_GL_PUBLIC_DIR}/render/GLRenderer.hpp"
     # GEOMETRY
     "${ENGINE_GL_PUBLIC_DIR}/mesh/GLGeometry.hpp"
+    # ASSETS
+    "${ENGINE_GL_PUBLIC_DIR}/assets/shaders/GLShader.hpp"
     ${ENGINE_HEADERS}
 )
 
@@ -40,6 +42,8 @@ set( ENGINE_SOURCES
     "${ENGINE_GL_PRIVATE_DIR}/render/GLRenderer.cpp"
     # GEOMETRY
     "${ENGINE_GL_PRIVATE_DIR}/mesh/GLGeometry.cpp"
+    # ASSETS
+    "${ENGINE_GL_PRIVATE_DIR}/assets/shaders/GLShader.cpp"
     ${ENGINE_SOURCES}
 )
 

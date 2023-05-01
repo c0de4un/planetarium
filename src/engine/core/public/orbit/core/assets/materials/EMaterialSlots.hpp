@@ -39,7 +39,8 @@ namespace orbit
 
             MATERIAL_SLOT_FRAGMENT_SHADER = 1,
             MATERIAL_SLOT_VERTEX_SHADER   = 2,
-            MATERIAL_SLOT_TEXTURE_2D      = 3,
+            MATERIAL_SLOT_GEOMETRY_SHADER = 3,
+            MATERIAL_SLOT_TEXTURE_2D      = 4,
             MATERIAL_SLOT_MAX             = 99
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,5 +52,7 @@ namespace orbit
     }
 
 }
+
+using orbit_EMaterialSlots = orbit::core::EMaterialSlots;
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =

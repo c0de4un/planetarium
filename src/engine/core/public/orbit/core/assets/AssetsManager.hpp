@@ -22,8 +22,15 @@
 #include <orbit/core/assets/materials/Material.hpp>
 #endif /// !ORBIT_CORE_MATERIAL_HPP
 
+// Include orbit::core::IShader
+#ifndef ORBIT_CORE_I_SHADER_HXX
+#include <orbit/core/assets/shaders/IShader.hxx>
+#endif /// !ORBIT_CORE_I_SHADER_HXX
+
 // Include STL memory
 #include <memory>
+
+// Include STL string
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
@@ -96,6 +103,8 @@ namespace orbit
             static void Terminate() noexcept;
 
             std::shared_ptr<orbit_IMaterial> createMaterial();
+
+            std::shared_ptr<orbit_IShader> createShader(const unsigned char shaderType, const std::string sourceFile);
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

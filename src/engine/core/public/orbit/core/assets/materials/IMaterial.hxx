@@ -22,6 +22,9 @@
 #include <orbit/core/assets/materials/IMaterialSlot.hxx>
 #endif /// !ORBIT_CORE_I_MATERIAL_SLOT_HXX
 
+// Include orbit::core::EMaterialSlots
+#include <orbit/core/assets/materials/EMaterialSlots.hpp>
+
 // Include STL memory
 #include <memory>
 

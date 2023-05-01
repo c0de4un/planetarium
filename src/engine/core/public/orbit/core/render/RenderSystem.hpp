@@ -129,6 +129,8 @@ namespace orbit
 
             virtual std::shared_ptr<orbit_IMaterial> createMaterial() override;
 
+            virtual std::shared_ptr<orbit_IShader> createShader(const unsigned char shaderType, const std::string sourceFile) override;
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         }; /// orbit::core::System

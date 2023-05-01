@@ -175,6 +175,15 @@ namespace orbit
             return std::shared_ptr<orbit_IMaterial>(nullptr);
         }
 
+        std::shared_ptr<orbit_IShader> RenderSystem::createShader(const unsigned char shaderType, const std::string sourceFile)
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            throw new std::exception("RenderSystem::createShader: not implemented");
+#endif // DEBUG
+
+            return std::shared_ptr<orbit_IShader>(nullptr);
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     }

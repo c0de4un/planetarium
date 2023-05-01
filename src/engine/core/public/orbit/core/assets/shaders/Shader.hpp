@@ -27,6 +27,9 @@
 #include <orbit/core/assets/shaders/IShader.hxx>
 #endif /// !ORBIT_CORE_I_SHADER_HXX
 
+// Include STL string
+#include <string>
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -54,13 +57,21 @@ namespace orbit
             // FIELDS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+            const unsigned char mMaterialSlotType;
             const unsigned char mShaderType;
+            const std::string   mSourceFile;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // CONSTRUCTOR
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-            explicit Shader(const unsigned char shaderType);
+            explicit Shader(const unsigned char shaderType, const std::string sourceFile);
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            static unsigned char getMaterialSlotType(const unsigned shaderType) noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // DELETED
@@ -86,6 +97,8 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // GETTERS & SETTERS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual unsigned char getSlotType() const noexcept final;
 
             virtual unsigned char getShaderType() const noexcept final;
 
