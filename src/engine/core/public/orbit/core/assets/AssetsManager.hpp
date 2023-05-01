@@ -17,6 +17,11 @@
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// Include orbit::core::Material
+#ifndef ORBIT_CORE_MATERIAL_HPP
+#include <orbit/core/assets/materials/Material.hpp>
+#endif /// !ORBIT_CORE_MATERIAL_HPP
+
 // Include STL memory
 #include <memory>
 
@@ -89,6 +94,8 @@ namespace orbit
 
             static void Initialize(std::shared_ptr<AssetsManager> pInstance);
             static void Terminate() noexcept;
+
+            std::shared_ptr<orbit_IMaterial> createMaterial();
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

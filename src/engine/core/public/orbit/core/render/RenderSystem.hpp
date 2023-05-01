@@ -127,6 +127,8 @@ namespace orbit
             virtual void addListener(std::shared_ptr<orbit_IRenderListener> pListener)    final;
             virtual void removeListener(std::shared_ptr<orbit_IRenderListener> pListener) final;
 
+            virtual std::shared_ptr<orbit_IMaterial> createMaterial() override;
+
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         }; /// orbit::core::System

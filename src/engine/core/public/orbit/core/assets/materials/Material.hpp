@@ -103,6 +103,8 @@ namespace orbit
 
 }
 
+using orbit_Material = orbit::core::Material;
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 #endif /// !ORBIT_CORE_MATERIAL_HPP

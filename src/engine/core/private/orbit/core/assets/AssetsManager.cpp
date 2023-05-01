@@ -19,6 +19,11 @@
 #include <orbit/core/assets/AssetsManager.hpp>
 #endif /// !ORBIT_CORE_ASSETS_MANAGER_HPP
 
+// Include orbit::core::RenderSystemProvider
+#ifndef ORBIT_CORE_RENDER_SYSTEM_PROVIDER_HPP
+#include <orbit/core/render/RenderSystemProvider.hpp>
+#endif /// !ORBIT_CORE_RENDER_SYSTEM_PROVIDER_HPP
+
 #ifdef ORBIT_DEBUG // DEBUG
 
 // Include orbit::debug
@@ -84,6 +89,20 @@ namespace orbit
 #endif // DEBUG
 
             mInstance.reset();
+        }
+
+        std::shared_ptr<orbit_IMaterial> AssetsManager::createMaterial()
+        {
+            std::shared_ptr<orbit_IRenderer> renderSystem( orbit_RenderSystemProvider::getRenderer() );
+
+#ifdef ORBIT_DEBUT // DEBUG
+            assert(renderSystem.get() && "AssetsManager::createMaterial: Render system not initialized");
+#else // !DEBUG
+            if (!renderSystem.get())
+                return std::shared_ptr<orbit_IMaterial>(nullptr);
+#endif // DEBUG
+
+            return renderSystem->createMaterial();
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

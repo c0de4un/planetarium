@@ -19,6 +19,11 @@
 #include <orbit/gl/render/GLRenderer.hpp>
 #endif /// !ORBIT_GL_RENDERER_HPP
 
+// Include orbit::core::Material
+#ifndef ORBIT_CORE_MATERIAL_HPP
+#include <orbit/core/assets/materials/Material.hpp>
+#endif /// !ORBIT_CORE_MATERIAL_HPP
+
 // DEBUG
 #ifdef ORBIT_DEBUG
 
@@ -29,7 +34,7 @@
 
 #endif
 // DEBUG
-// 
+ 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // GLRenderer
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -93,6 +98,15 @@ namespace orbit
 #endif // DEBUG
 
             System::onStop();
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // METHODS.IRenderer
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        std::shared_ptr<orbit_IMaterial> GLRenderer::createMaterial()
+        {
+            return std::static_pointer_cast<orbit_IMaterial, orbit_Material>( std::make_shared<orbit_Material>() );
         }
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

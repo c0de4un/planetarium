@@ -166,6 +166,15 @@ namespace orbit
             }
         }
 
+        std::shared_ptr<orbit_IMaterial> RenderSystem::createMaterial()
+        {
+#ifdef ORBIT_DEBUG // DEBUG
+            throw new std::exception("RenderSystem::createMaterial: not implemented");
+#endif // DEBUG
+
+            return std::shared_ptr<orbit_IMaterial>(nullptr);
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     }

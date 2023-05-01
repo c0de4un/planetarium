@@ -112,6 +112,12 @@ namespace orbit
             virtual ~GLRenderer() noexcept;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.IRenderer
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual std::shared_ptr<orbit_IMaterial> createMaterial() final;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.IMeshFactory
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
