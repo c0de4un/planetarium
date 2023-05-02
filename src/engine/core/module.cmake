@@ -25,9 +25,11 @@ set( ENGINE_HEADERS
     "${ENGINE_CORE_PUBLIC_DIR}ecs/Entity.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}ecs/ISystem.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}ecs/System.hpp"
+    "${ENGINE_CORE_PUBLIC_DIR}ecs/Component.hpp"
     # GRAPHICS
     "${ENGINE_CORE_PUBLIC_DIR}graphics/Graphics.hpp"
     # RENDER
+    "${ENGINE_CORE_PUBLIC_DIR}render/Batch.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}render/IDrawable.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}render/IRenderListener.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}render/IRenderer.hxx"
