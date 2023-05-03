@@ -32,6 +32,11 @@
 #include <orbit/core/assets/Asset.hpp>
 #endif /// !ORBIT_CORE_ASSET_HPP
 
+// Include orbit::core::IDrawable
+#ifndef ORBIT_CORE_I_DRAWABLE_HXX
+#include <orbit/core/render/IDrawable.hxx>
+#endif /// !ORBIT_CORE_I_DRAWABLE_HXX
+
 // Include STL atomic
 #include <atomic>
 
@@ -60,7 +65,7 @@ namespace orbit
         // GameObject
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        class GameObject : public orbit_Entity, public orbit_ILoadable
+        class GameObject : public orbit_Entity, public orbit_ILoadable, public orbit_IDrawable
         {
 
         private:
@@ -156,6 +161,12 @@ namespace orbit
 
             virtual bool Load()   override;
             virtual void Unload() override;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // METHODS.IDrawable
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            virtual void Draw() override;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.GameObject

@@ -22,6 +22,24 @@
 #include <orbit/core/ecs/Component.hpp>
 #endif /// !ORBIT_CORE_COMPONENT_HPP
 
+// Include orbit::core::IDrawable
+#ifndef ORBIT_CORE_I_DRAWABLE_HXX
+#include <orbit/core/render/IDrawable.hxx>
+#endif /// !ORBIT_CORE_I_DRAWABLE_HXX
+
+// Include orbit::core::Material
+#ifndef ORBIT_CORE_MATERIAL_HPP
+#include <orbit/core/assets/materials/Material.hpp>
+#endif /// !ORBIT_CORE_MATERIAL_HPP
+
+// Include orbit::core::IMesh
+#ifndef ORBIT_CORE_I_MESH_HXX
+#include <orbit/core/mesh/IMesh.hxx>
+#endif /// !ORBIT_CORE_I_MESH_HXX
+
+// Include STL memory
+#include <memory>
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -44,8 +62,19 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // FIELDS
+            // CONSTANTS
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            const bool         mTransparent;
+            const unsigned int mZOrder;
+
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // FIELD
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            std::weak_ptr<orbit_IDrawable> mDrawable;
+            std::weak_ptr<orbit_Material>  mMaterial;
+            std::weak_ptr<orbit_IMesh>     mMesh;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

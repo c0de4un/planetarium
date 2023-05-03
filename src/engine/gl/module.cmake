@@ -25,6 +25,7 @@ set( ENGINE_HEADERS
     # CONFIG
     "${ENGINE_GL_PUBLIC_DIR}/config/orbit_gl.hpp"
     # RENDER
+    "${ENGINE_GL_PUBLIC_DIR}/render/GLBatch.hpp"
     "${ENGINE_GL_PUBLIC_DIR}/render/GLRenderer.hpp"
     # GEOMETRY
     "${ENGINE_GL_PUBLIC_DIR}/mesh/GLGeometry.hpp"

@@ -129,6 +129,24 @@ namespace orbit
             return std::shared_ptr<orbit_Shader>(nullptr);
         }
 
+        std::shared_ptr<orbit_Batch> GLRenderer::addDrawable(std::shared_ptr<orbit_BatchRequest> pRequest)
+        {
+            //orbit_BatchRequest* const request(pRequest.get());
+            //GLBatch batch{
+            //    std::mutex(), // mMutex
+            //    false,        // mDisabled
+            //    request->mTransparent,
+            //};
+
+            // @TODO: GLRenderer::addDrawable()
+            return std::shared_ptr<orbit_Batch>(nullptr);
+        }
+
+        void GLRenderer::removeDrawable(std::shared_ptr<orbit_Batch> pBatch)
+        {
+            // @TODO: GLRenderer::removeDrawable()
+        }
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // METHODS.GLRenderer
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

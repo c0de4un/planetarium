@@ -32,6 +32,16 @@
 #include <orbit/core/assets/shaders/Shader.hpp>
 #endif /// !ORBIT_CORE_SHADER_HPP
 
+// Include orbit::core::Batch
+#ifndef ORBIT_CORE_BATCH_HPP
+#include <orbit/core/render/Batch.hpp>
+#endif /// !ORBIT_CORE_BATCH_HPP
+
+// Include orbit::core::BatchRequest
+#ifndef ORBIT_CORE_BATCH_REQUEST_HPP
+#include <orbit/core/render/BatchRequest.hpp>
+#endif /// !ORBIT_CORE_BATCH_REQUEST_HPP
+
 // Include STL memory
 #include <memory>
 
@@ -77,6 +87,9 @@ namespace orbit
             virtual std::shared_ptr<orbit_Material> createMaterial() = 0;
 
             virtual std::shared_ptr<orbit_Shader> createShader(const unsigned char shaderType, const std::string sourceFile) = 0;
+
+            virtual std::shared_ptr<orbit_Batch> addDrawable(std::shared_ptr<orbit_BatchRequest> pRequest) = 0;
+            virtual void removeDrawable(std::shared_ptr<orbit_Batch> pBatch) = 0;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

@@ -8,53 +8,54 @@
  * SOFTWARE.
 **/
 
+#ifndef ORBIT_GL_BATCH_HPP
+#define ORBIT_GL_BATCH_HPP
+
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // INCLUDES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// HEADER
-#ifndef ORBIT_CORE_CAMERA_3D_HPP
-#include <orbit/core/camera/Camera3D.hpp>
-#endif /// !ORBIT_CORE_CAMERA_3D_HPP
+// Include orbit::core::Batch
+#ifndef ORBIT_CORE_BATCH_HPP
+#include <orbit/core/render/Batch.hpp>
+#endif /// !ORBIT_CORE_BATCH_HPP
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Camera3D
+// TYPES
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 namespace orbit
 {
 
-    namespace core
+    namespace gl
     {
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // CONSTRUCTOR & DESTRUCTOR
+        // GLBatch
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        Camera3D::Camera3D()
-            : Camera()
+        struct GLBatch final : public orbit_Component
         {
-        }
 
-        Camera3D::~Camera3D() noexcept = default;
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // METHODS.ICamera
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        void Camera3D::RenderScene(std::shared_ptr<orbit_IScene> pScene)
-        {
-            // @TODO: Camera3D::RenderScene()
-        }
+        };
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    } /// orbit::core
+    }
 
-} /// orbit
+}
+
+using orbit_GLBatch = orbit::gl::GLBatch;
+#define ORBIT_GL_BATCH_DECL
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+#endif /// !ORBIT_GL_BATCH_HPP

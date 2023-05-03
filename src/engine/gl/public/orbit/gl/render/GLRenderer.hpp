@@ -27,6 +27,11 @@
 #include <orbit/core/mesh/IMeshFactory.hxx>
 #endif /// !ORBIT_CORE_I_MESH_FACTORY_HXX
 
+// Include orbit::gl::GLBatch
+#ifndef ORBIT_GL_BATCH_HPP
+#include <orbit/gl/render/GLBatch.hpp>
+#endif /// !ORBIT_GL_BATCH_HPP
+
 // Include orbit::gl
 #ifndef ORBIT_GL_HPP
 #include <orbit/gl/config/orbit_gl.hpp>
@@ -60,6 +65,8 @@ namespace orbit
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             bool mFirstFrame;
+
+            // @TODO: Store Batches
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS
@@ -124,6 +131,9 @@ namespace orbit
             virtual std::shared_ptr<orbit_Material> createMaterial() final;
 
             virtual std::shared_ptr<orbit_Shader> createShader(const unsigned char shaderType, const std::string sourceFile) final;
+
+            virtual std::shared_ptr<orbit_Batch> addDrawable(std::shared_ptr<orbit_BatchRequest> pRequest) final;
+            virtual void removeDrawable(std::shared_ptr<orbit_Batch> pBatch) final;
 
             // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             // METHODS.GLRenderer
