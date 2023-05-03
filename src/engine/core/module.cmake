@@ -29,6 +29,7 @@ set( ENGINE_HEADERS
     # GRAPHICS
     "${ENGINE_CORE_PUBLIC_DIR}graphics/Graphics.hpp"
     # RENDER
+    "${ENGINE_CORE_PUBLIC_DIR}render/BatchRequest.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}render/Batch.hpp"
     "${ENGINE_CORE_PUBLIC_DIR}render/IDrawable.hxx"
     "${ENGINE_CORE_PUBLIC_DIR}render/IRenderListener.hxx"
